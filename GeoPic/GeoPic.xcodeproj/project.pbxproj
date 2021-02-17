@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,10 @@
 		D27CBD2225DDC7CA00BE02E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD2025DDC7CA00BE02E9 /* LaunchScreen.storyboard */; };
 		D27CBD2D25DDC7CB00BE02E9 /* GeoPicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD2C25DDC7CB00BE02E9 /* GeoPicTests.swift */; };
 		D27CBD3825DDC7CB00BE02E9 /* GeoPicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD3725DDC7CB00BE02E9 /* GeoPicUITests.swift */; };
+		D27CBD5625DDCA3D00BE02E9 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5525DDCA3D00BE02E9 /* FirebaseStorage */; };
+		D27CBD5825DDCA3D00BE02E9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5725DDCA3D00BE02E9 /* FirebaseAuth */; };
+		D27CBD5A25DDCA3D00BE02E9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5925DDCA3D00BE02E9 /* FirebaseFirestore */; };
+		D27CBD5C25DDCA3D00BE02E9 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5B25DDCA3D00BE02E9 /* FirebaseDatabase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D27CBD5625DDCA3D00BE02E9 /* FirebaseStorage in Frameworks */,
+				D27CBD5825DDCA3D00BE02E9 /* FirebaseAuth in Frameworks */,
+				D27CBD5C25DDCA3D00BE02E9 /* FirebaseDatabase in Frameworks */,
+				D27CBD5A25DDCA3D00BE02E9 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +179,12 @@
 			dependencies = (
 			);
 			name = GeoPic;
+			packageProductDependencies = (
+				D27CBD5525DDCA3D00BE02E9 /* FirebaseStorage */,
+				D27CBD5725DDCA3D00BE02E9 /* FirebaseAuth */,
+				D27CBD5925DDCA3D00BE02E9 /* FirebaseFirestore */,
+				D27CBD5B25DDCA3D00BE02E9 /* FirebaseDatabase */,
+			);
 			productName = GeoPic;
 			productReference = D27CBD0F25DDC7C800BE02E9 /* GeoPic.app */;
 			productType = "com.apple.product-type.application";
@@ -242,6 +256,9 @@
 				Base,
 			);
 			mainGroup = D27CBD0625DDC7C800BE02E9;
+			packageReferences = (
+				D27CBD5425DDCA3D00BE02E9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = D27CBD1025DDC7C800BE02E9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -621,6 +638,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D27CBD5425DDCA3D00BE02E9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D27CBD5525DDCA3D00BE02E9 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D27CBD5425DDCA3D00BE02E9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		D27CBD5725DDCA3D00BE02E9 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D27CBD5425DDCA3D00BE02E9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		D27CBD5925DDCA3D00BE02E9 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D27CBD5425DDCA3D00BE02E9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		D27CBD5B25DDCA3D00BE02E9 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D27CBD5425DDCA3D00BE02E9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D27CBD1B25DDC7C900BE02E9 /* GeoPic.xcdatamodeld */ = {

@@ -20,6 +20,7 @@
 		D27CBD5825DDCA3D00BE02E9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5725DDCA3D00BE02E9 /* FirebaseAuth */; };
 		D27CBD5A25DDCA3D00BE02E9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5925DDCA3D00BE02E9 /* FirebaseFirestore */; };
 		D27CBD5C25DDCA3D00BE02E9 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5B25DDCA3D00BE02E9 /* FirebaseDatabase */; };
+		D27CBD6425DDD38B00BE02E9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD6325DDD38B00BE02E9 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		D27CBD3325DDC7CB00BE02E9 /* GeoPicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoPicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27CBD3725DDC7CB00BE02E9 /* GeoPicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPicUITests.swift; sourceTree = "<group>"; };
 		D27CBD3925DDC7CB00BE02E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D27CBD6325DDD38B00BE02E9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 		D27CBD0625DDC7C800BE02E9 = {
 			isa = PBXGroup;
 			children = (
+				D27CBD6325DDD38B00BE02E9 /* README.md */,
 				D27CBD1125DDC7C800BE02E9 /* GeoPic */,
 				D27CBD2B25DDC7CB00BE02E9 /* GeoPicTests */,
 				D27CBD3625DDC7CB00BE02E9 /* GeoPicUITests */,
@@ -277,6 +280,7 @@
 			files = (
 				D27CBD2225DDC7CA00BE02E9 /* LaunchScreen.storyboard in Resources */,
 				D27CBD1F25DDC7CA00BE02E9 /* Assets.xcassets in Resources */,
+				D27CBD6425DDD38B00BE02E9 /* README.md in Resources */,
 				D27CBD1A25DDC7C900BE02E9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		D27CBD1325DDC7C800BE02E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1225DDC7C800BE02E9 /* AppDelegate.swift */; };
 		D27CBD1525DDC7C800BE02E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1425DDC7C800BE02E9 /* SceneDelegate.swift */; };
-		D27CBD1725DDC7C800BE02E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1625DDC7C800BE02E9 /* ViewController.swift */; };
-		D27CBD1A25DDC7C900BE02E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD1825DDC7C900BE02E9 /* Main.storyboard */; };
+		D27CBD1725DDC7C800BE02E9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1625DDC7C800BE02E9 /* LoginViewController.swift */; };
+		D27CBD1A25DDC7C900BE02E9 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD1825DDC7C900BE02E9 /* Auth.storyboard */; };
 		D27CBD1D25DDC7C900BE02E9 /* GeoPic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1B25DDC7C900BE02E9 /* GeoPic.xcdatamodeld */; };
 		D27CBD1F25DDC7CA00BE02E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD1E25DDC7CA00BE02E9 /* Assets.xcassets */; };
 		D27CBD2225DDC7CA00BE02E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD2025DDC7CA00BE02E9 /* LaunchScreen.storyboard */; };
@@ -21,6 +21,9 @@
 		D27CBD5A25DDCA3D00BE02E9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5925DDCA3D00BE02E9 /* FirebaseFirestore */; };
 		D27CBD5C25DDCA3D00BE02E9 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5B25DDCA3D00BE02E9 /* FirebaseDatabase */; };
 		D27CBD6425DDD38B00BE02E9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD6325DDD38B00BE02E9 /* README.md */; };
+		D2BAB0B325E411D100449978 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BAB0B225E411D100449978 /* CreateAccountViewController.swift */; };
+		D2BAB0B925E4148400449978 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D2BAB0B825E4148400449978 /* IQKeyboardManagerSwift */; };
+		D2BAB0C425E4188A00449978 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BAB0C325E4188A00449978 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +47,8 @@
 		D27CBD0F25DDC7C800BE02E9 /* GeoPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27CBD1225DDC7C800BE02E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D27CBD1425DDC7C800BE02E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D27CBD1625DDC7C800BE02E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D27CBD1925DDC7C900BE02E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D27CBD1625DDC7C800BE02E9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D27CBD1925DDC7C900BE02E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Auth.storyboard; sourceTree = "<group>"; };
 		D27CBD1C25DDC7C900BE02E9 /* GeoPic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GeoPic.xcdatamodel; sourceTree = "<group>"; };
 		D27CBD1E25DDC7CA00BE02E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D27CBD2125DDC7CA00BE02E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +60,8 @@
 		D27CBD3725DDC7CB00BE02E9 /* GeoPicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPicUITests.swift; sourceTree = "<group>"; };
 		D27CBD3925DDC7CB00BE02E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27CBD6325DDD38B00BE02E9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		D2BAB0B225E411D100449978 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		D2BAB0C325E4188A00449978 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2BAB0B925E4148400449978 /* IQKeyboardManagerSwift in Frameworks */,
 				D27CBD5625DDCA3D00BE02E9 /* FirebaseStorage in Frameworks */,
 				D27CBD5825DDCA3D00BE02E9 /* FirebaseAuth in Frameworks */,
 				D27CBD5C25DDCA3D00BE02E9 /* FirebaseDatabase in Frameworks */,
@@ -118,6 +124,7 @@
 				D27CBD1E25DDC7CA00BE02E9 /* Assets.xcassets */,
 				D27CBD2325DDC7CA00BE02E9 /* Info.plist */,
 				D27CBD1B25DDC7C900BE02E9 /* GeoPic.xcdatamodeld */,
+				D2BAB0C325E4188A00449978 /* Constants.swift */,
 			);
 			path = GeoPic;
 			sourceTree = "<group>";
@@ -152,7 +159,8 @@
 		D27CBD4F25DDC80A00BE02E9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D27CBD1625DDC7C800BE02E9 /* ViewController.swift */,
+				D27CBD1625DDC7C800BE02E9 /* LoginViewController.swift */,
+				D2BAB0B225E411D100449978 /* CreateAccountViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -160,7 +168,7 @@
 		D27CBD5325DDC81500BE02E9 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				D27CBD1825DDC7C900BE02E9 /* Main.storyboard */,
+				D27CBD1825DDC7C900BE02E9 /* Auth.storyboard */,
 				D27CBD2025DDC7CA00BE02E9 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -187,6 +195,7 @@
 				D27CBD5725DDCA3D00BE02E9 /* FirebaseAuth */,
 				D27CBD5925DDCA3D00BE02E9 /* FirebaseFirestore */,
 				D27CBD5B25DDCA3D00BE02E9 /* FirebaseDatabase */,
+				D2BAB0B825E4148400449978 /* IQKeyboardManagerSwift */,
 			);
 			productName = GeoPic;
 			productReference = D27CBD0F25DDC7C800BE02E9 /* GeoPic.app */;
@@ -261,6 +270,7 @@
 			mainGroup = D27CBD0625DDC7C800BE02E9;
 			packageReferences = (
 				D27CBD5425DDCA3D00BE02E9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D2BAB0B725E4148400449978 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = D27CBD1025DDC7C800BE02E9 /* Products */;
 			projectDirPath = "";
@@ -281,7 +291,7 @@
 				D27CBD2225DDC7CA00BE02E9 /* LaunchScreen.storyboard in Resources */,
 				D27CBD1F25DDC7CA00BE02E9 /* Assets.xcassets in Resources */,
 				D27CBD6425DDD38B00BE02E9 /* README.md in Resources */,
-				D27CBD1A25DDC7C900BE02E9 /* Main.storyboard in Resources */,
+				D27CBD1A25DDC7C900BE02E9 /* Auth.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,10 +316,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D27CBD1725DDC7C800BE02E9 /* ViewController.swift in Sources */,
+				D2BAB0B325E411D100449978 /* CreateAccountViewController.swift in Sources */,
+				D27CBD1725DDC7C800BE02E9 /* LoginViewController.swift in Sources */,
 				D27CBD1325DDC7C800BE02E9 /* AppDelegate.swift in Sources */,
 				D27CBD1D25DDC7C900BE02E9 /* GeoPic.xcdatamodeld in Sources */,
 				D27CBD1525DDC7C800BE02E9 /* SceneDelegate.swift in Sources */,
+				D2BAB0C425E4188A00449978 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,12 +357,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D27CBD1825DDC7C900BE02E9 /* Main.storyboard */ = {
+		D27CBD1825DDC7C900BE02E9 /* Auth.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D27CBD1925DDC7C900BE02E9 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Auth.storyboard;
 			sourceTree = "<group>";
 		};
 		D27CBD2025DDC7CA00BE02E9 /* LaunchScreen.storyboard */ = {
@@ -652,6 +664,14 @@
 				minimumVersion = 7.6.0;
 			};
 		};
+		D2BAB0B725E4148400449978 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.6;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -674,6 +694,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D27CBD5425DDCA3D00BE02E9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
+		};
+		D2BAB0B825E4148400449978 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2BAB0B725E4148400449978 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

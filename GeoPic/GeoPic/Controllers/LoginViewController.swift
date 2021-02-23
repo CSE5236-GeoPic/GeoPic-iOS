@@ -24,6 +24,11 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginPressed(_ sender: UIButton) {
+        // FIXME: temporary alert view until Firebase is connected
+        let alert = UIAlertController(title: "WIP", message: "Not yet implemented", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func createAccPressed(_ sender: UIButton) {

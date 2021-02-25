@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import Firebase
 
-class MainViewController: UIViewController, CLLocationManagerDelegate {
+class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet private var mapView: MKMapView!
     @IBOutlet private var cameraButton: UIButton!
@@ -21,6 +21,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         // Set up map
+        mapView.delegate = self
         mapView.showsUserLocation = true
         // Remove apple maps logo
         mapView.subviews[1].isHidden = true
@@ -66,14 +67,32 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                     let score = document.data()["score"] as! UInt
                     
                     let userID = document.data()["user"] as! String
+                    
+                    let pinID = document.documentID
 
-                    let pin = Pin(image: image, coordinate: coord, score: score, userID: userID)
+                    let pin = Pin(id: pinID, image: image, coordinate: coord, score: score, userID: userID)
                     
                     self.mapView.addAnnotation(pin)
                 }
             }
         }
         
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        // Pass pin to segue
+        let pin = view.annotation as! Pin
+        performSegue(withIdentifier: "pictureSegue", sender: pin)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pictureSegue" {
+            // Pass pin to the PictureVC
+            guard let pin = sender as? Pin else { return }
+            if let destinationVC = segue.destination as? PictureViewController {
+                destinationVC.pin = pin
+            }
+        }
     }
     
     // Taken from: https://stackoverflow.com/questions/52564004/location-marker-not-displaying-swift-4

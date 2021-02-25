@@ -17,6 +17,9 @@
 		55719FC525E810F500390E25 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FC425E810F500390E25 /* Pin.swift */; };
 		55719FC625E810F500390E25 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FC425E810F500390E25 /* Pin.swift */; };
 		55719FC725E810F500390E25 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FC425E810F500390E25 /* Pin.swift */; };
+		55719FCF25E8334700390E25 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FCE25E8334700390E25 /* PictureViewController.swift */; };
+		55719FD325E8334A00390E25 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FCE25E8334700390E25 /* PictureViewController.swift */; };
+		55719FD425E8334A00390E25 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FCE25E8334700390E25 /* PictureViewController.swift */; };
 		D27CBD1325DDC7C800BE02E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1225DDC7C800BE02E9 /* AppDelegate.swift */; };
 		D27CBD1525DDC7C800BE02E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1425DDC7C800BE02E9 /* SceneDelegate.swift */; };
 		D27CBD1A25DDC7C900BE02E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD1825DDC7C900BE02E9 /* Main.storyboard */; };
@@ -54,6 +57,7 @@
 		55719FB125E70A9B00390E25 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		55719FB925E7F20200390E25 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		55719FC425E810F500390E25 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
+		55719FCE25E8334700390E25 /* PictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PictureViewController.swift; path = GeoPic/Controllers/PictureViewController.swift; sourceTree = SOURCE_ROOT; };
 		D27CBD0F25DDC7C800BE02E9 /* GeoPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27CBD1225DDC7C800BE02E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D27CBD1425DDC7C800BE02E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 		D27CBD4F25DDC80A00BE02E9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				55719FCE25E8334700390E25 /* PictureViewController.swift */,
 				55719FB125E70A9B00390E25 /* MainViewController.swift */,
 			);
 			path = Controllers;
@@ -334,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D27CBD1325DDC7C800BE02E9 /* AppDelegate.swift in Sources */,
+				55719FCF25E8334700390E25 /* PictureViewController.swift in Sources */,
 				55719FC525E810F500390E25 /* Pin.swift in Sources */,
 				D27CBD1D25DDC7C900BE02E9 /* GeoPic.xcdatamodeld in Sources */,
 				D27CBD1525DDC7C800BE02E9 /* SceneDelegate.swift in Sources */,
@@ -346,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55719FC625E810F500390E25 /* Pin.swift in Sources */,
+				55719FD325E8334A00390E25 /* PictureViewController.swift in Sources */,
 				D27CBD2D25DDC7CB00BE02E9 /* GeoPicTests.swift in Sources */,
 				55719FB325E70A9B00390E25 /* MainViewController.swift in Sources */,
 			);
@@ -356,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55719FC725E810F500390E25 /* Pin.swift in Sources */,
+				55719FD425E8334A00390E25 /* PictureViewController.swift in Sources */,
 				D27CBD3825DDC7CB00BE02E9 /* GeoPicUITests.swift in Sources */,
 				55719FB425E70A9B00390E25 /* MainViewController.swift in Sources */,
 			);

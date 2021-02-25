@@ -11,14 +11,16 @@ import MapKit
 class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet private var mapView: MKMapView!
+    @IBOutlet private var cameraButton: UIButton!
     
     var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set up map location
+        mapView.showsUserLocation = true
         self.locationManager.requestWhenInUseAuthorization()
-        
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -26,8 +28,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         }
         // TODO: Handle case where user does not accept location services
         
-        mapView.showsUserLocation = true
-
+        // Set up camera button
+        cameraButton.imageView?.contentMode = .scaleAspectFit
+        cameraButton.layer.masksToBounds = true
+        cameraButton.layer.cornerRadius = cameraButton.frame.width/2
     }
     
     // Taken from: https://stackoverflow.com/questions/52564004/location-marker-not-displaying-swift-4

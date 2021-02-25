@@ -6,18 +6,40 @@
 //
 
 import UIKit
+import Firebase
 
 class PictureViewController: UIViewController {
     
     @IBOutlet private var imageView: UIImageView!
+    @IBOutlet private var nameLabel: UILabel!
+    @IBOutlet private var dateLabel: UILabel!
+    @IBOutlet private var scoreLabel: UILabel!
+    @IBOutlet private var backButton: UIButton!
     
     var pin: Pin?
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(pin?.id!)
+        
+        let db = Firestore.firestore()
+        let docRef = db.collection("users").document((pin?.userID)!)
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                self.nameLabel.text = document.data()!["name"] as? String
+            } else {
+                print("Error retrieving name")
+            }
+        }
+        
+        imageView.image = pin?.image
+        scoreLabel.text = String((pin?.score)!)
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        dateLabel.text = formatter.string(from: (pin?.date)!)
 
+    }
+    @IBAction func back(sender: UIButton){
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

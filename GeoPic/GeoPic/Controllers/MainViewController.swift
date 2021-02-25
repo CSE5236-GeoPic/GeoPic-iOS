@@ -69,8 +69,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
                     let userID = document.data()["user"] as! String
                     
                     let pinID = document.documentID
+                    
+                    let timestamp = document.data()["date"] as! Timestamp
+                    let date = timestamp.dateValue()
 
-                    let pin = Pin(id: pinID, image: image, coordinate: coord, score: score, userID: userID)
+                    let pin = Pin(id: pinID, image: image, coordinate: coord, score: score, userID: userID, date: date)
                     
                     self.mapView.addAnnotation(pin)
                 }

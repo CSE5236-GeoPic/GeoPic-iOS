@@ -14,19 +14,22 @@ class Pin: NSObject, MKAnnotation {
     let coordinate: CLLocationCoordinate2D
     let score: UInt?
     let userID: String?
+    let date: Date?
 
     init(
         id: String?,
         image: UIImage?,
         coordinate: CLLocationCoordinate2D,
         score: UInt?,
-        userID: String?
+        userID: String?,
+        date: Date?
     ) {
         self.score = score
         self.userID = userID
         self.coordinate = coordinate
         self.image = image
         self.id = id
+        self.date = date
         super.init()
     }
 }

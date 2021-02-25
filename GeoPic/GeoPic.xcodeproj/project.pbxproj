@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55719FA525E6FC1A00390E25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55719FA425E6FC1A00390E25 /* GoogleService-Info.plist */; };
+		55719FA625E6FC1A00390E25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55719FA425E6FC1A00390E25 /* GoogleService-Info.plist */; };
+		55719FA725E6FC1A00390E25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55719FA425E6FC1A00390E25 /* GoogleService-Info.plist */; };
 		D27CBD1325DDC7C800BE02E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1225DDC7C800BE02E9 /* AppDelegate.swift */; };
 		D27CBD1525DDC7C800BE02E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1425DDC7C800BE02E9 /* SceneDelegate.swift */; };
 		D27CBD1725DDC7C800BE02E9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1625DDC7C800BE02E9 /* LoginViewController.swift */; };
@@ -44,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55719FA425E6FC1A00390E25 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D27CBD0F25DDC7C800BE02E9 /* GeoPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27CBD1225DDC7C800BE02E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D27CBD1425DDC7C800BE02E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 		D27CBD0625DDC7C800BE02E9 = {
 			isa = PBXGroup;
 			children = (
+				55719FA425E6FC1A00390E25 /* GoogleService-Info.plist */,
 				D27CBD6325DDD38B00BE02E9 /* README.md */,
 				D27CBD1125DDC7C800BE02E9 /* GeoPic */,
 				D27CBD2B25DDC7CB00BE02E9 /* GeoPicTests */,
@@ -290,6 +295,7 @@
 			files = (
 				D27CBD2225DDC7CA00BE02E9 /* LaunchScreen.storyboard in Resources */,
 				D27CBD1F25DDC7CA00BE02E9 /* Assets.xcassets in Resources */,
+				55719FA525E6FC1A00390E25 /* GoogleService-Info.plist in Resources */,
 				D27CBD6425DDD38B00BE02E9 /* README.md in Resources */,
 				D27CBD1A25DDC7C900BE02E9 /* Auth.storyboard in Resources */,
 			);
@@ -299,6 +305,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55719FA625E6FC1A00390E25 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +313,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55719FA725E6FC1A00390E25 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

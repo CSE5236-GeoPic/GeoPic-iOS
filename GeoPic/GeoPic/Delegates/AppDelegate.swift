@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import IQKeyboardManagerSwift
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // only enable IQKeyboardManager for certain view controllers
         IQKeyboardManager.shared.enabledToolbarClasses.append(LoginViewController.self)
         IQKeyboardManager.shared.enabledToolbarClasses.append(CreateAccountViewController.self)
+        // Use Firebase library to configure APIs
+        FirebaseApp.configure()
         return true
     }
 

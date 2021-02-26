@@ -141,7 +141,13 @@ class LoginViewController: UIViewController {
                     alert.addAction(noAction)
                     strongSelf.present(alert, animated: true)
                 }
-                // TODO: call performSegue()
+                #warning("performSegue not implemented")
+                let alert = UIAlertController(title: "Login Successful", message: "WIP: Segue should happen to main screen here", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .cancel) { handler in
+                    strongSelf.emailTextfield.becomeFirstResponder()
+                }
+                alert.addAction(action)
+                strongSelf.present(alert, animated: true)
             }
         }
     }

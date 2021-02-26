@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  GeoPic
 //
 //  Created by John Choi on 2/17/21.
@@ -32,6 +32,12 @@ class LoginViewController: UIViewController {
         // set up corner radius for the two buttons to make them look nicer
         loginBtn.layer.cornerRadius = 10
         createAccBtn.layer.cornerRadius = 10
+        
+        // textfields setup
+        emailTextfield.tag = 0
+        passwordTextfield.tag = 1
+        emailTextfield.delegate = self
+        passwordTextfield.delegate = self
         
         // determine if keychain has username and password
         biometricBtn.isHidden = true
@@ -112,9 +118,11 @@ class LoginViewController: UIViewController {
                 // login unsuccessful
                 // display error message if login failed
                 let alert = UIAlertController(title: "Login Failed!", message: "There was a problem logging in. Please try again.", preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                let action = UIAlertAction(title: "OK", style: .cancel) { handler in
+                    strongSelf.emailTextfield.becomeFirstResponder()
+                }
                 alert.addAction(action)
-                strongSelf.present(alert, animated: true, completion: nil)
+                strongSelf.present(alert, animated: true)
             } else {
                 // login successful
                 print("successful firebase")
@@ -139,6 +147,23 @@ class LoginViewController: UIViewController {
     }
 }
 
+// MARK: Textfield delegate methods
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField.tag {
+        case 0:
+            passwordTextfield.becomeFirstResponder()
+            return false
+        case 1:
+            login(with: .emailPassword)
+        default:
+            print("should never get here")
+        }
+        return true
+    }
+}
+
+// MARK: Enum that defines login method
 fileprivate enum LoginMethod {
     case emailPassword
     case biometric

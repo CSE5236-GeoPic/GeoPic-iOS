@@ -51,10 +51,21 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bY6-Pp-o4w">
-                                                <rect key="frame" x="93.333333333333329" y="0.0" width="236.66666666666669" height="34"/>
+                                                <rect key="frame" x="93.333333333333329" y="0.0" width="182.66666666666669" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HpJ-Ju-ooo">
+                                                <rect key="frame" x="296" y="1.3333333333333357" width="34" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="HpJ-Ju-ooo" secondAttribute="height" multiplier="1:1" id="6VD-GP-aDS"/>
+                                                    <constraint firstAttribute="height" constant="34" id="8Ce-lw-K7W"/>
+                                                </constraints>
+                                                <state key="normal" backgroundImage="faceid" catalog="system"/>
+                                                <connections>
+                                                    <action selector="biometricPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LZi-Ub-fFa"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jk8-LN-QRJ">
@@ -94,6 +105,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="biometricBtn" destination="HpJ-Ju-ooo" id="mr8-cR-eje"/>
                         <outlet property="createAccBtn" destination="CbP-jQ-jMo" id="Lnc-uA-0CA"/>
                         <outlet property="emailTextfield" destination="tSQ-Zd-HgH" id="8dT-6s-8E3"/>
                         <outlet property="loginBtn" destination="jk8-LN-QRJ" id="mco-9w-dx8"/>
@@ -218,6 +230,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="faceid" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

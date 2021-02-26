@@ -24,6 +24,7 @@
 		D27CBD5A25DDCA3D00BE02E9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5925DDCA3D00BE02E9 /* FirebaseFirestore */; };
 		D27CBD5C25DDCA3D00BE02E9 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5B25DDCA3D00BE02E9 /* FirebaseDatabase */; };
 		D27CBD6425DDD38B00BE02E9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD6325DDD38B00BE02E9 /* README.md */; };
+		D2839DF725E8DEF300F737F3 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D2839DF625E8DEF300F737F3 /* KeychainSwift */; };
 		D2BAB0B325E411D100449978 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BAB0B225E411D100449978 /* CreateAccountViewController.swift */; };
 		D2BAB0B925E4148400449978 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D2BAB0B825E4148400449978 /* IQKeyboardManagerSwift */; };
 		D2BAB0C425E4188A00449978 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BAB0C325E4188A00449978 /* Constants.swift */; };
@@ -73,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2839DF725E8DEF300F737F3 /* KeychainSwift in Frameworks */,
 				D2BAB0B925E4148400449978 /* IQKeyboardManagerSwift in Frameworks */,
 				D27CBD5625DDCA3D00BE02E9 /* FirebaseStorage in Frameworks */,
 				D27CBD5825DDCA3D00BE02E9 /* FirebaseAuth in Frameworks */,
@@ -201,6 +203,7 @@
 				D27CBD5925DDCA3D00BE02E9 /* FirebaseFirestore */,
 				D27CBD5B25DDCA3D00BE02E9 /* FirebaseDatabase */,
 				D2BAB0B825E4148400449978 /* IQKeyboardManagerSwift */,
+				D2839DF625E8DEF300F737F3 /* KeychainSwift */,
 			);
 			productName = GeoPic;
 			productReference = D27CBD0F25DDC7C800BE02E9 /* GeoPic.app */;
@@ -276,6 +279,7 @@
 			packageReferences = (
 				D27CBD5425DDCA3D00BE02E9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				D2BAB0B725E4148400449978 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				D2839DF525E8DEF300F737F3 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = D27CBD1025DDC7C800BE02E9 /* Products */;
 			projectDirPath = "";
@@ -672,6 +676,14 @@
 				minimumVersion = 7.6.0;
 			};
 		};
+		D2839DF525E8DEF300F737F3 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 19.0.0;
+			};
+		};
 		D2BAB0B725E4148400449978 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
@@ -702,6 +714,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D27CBD5425DDCA3D00BE02E9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
+		};
+		D2839DF625E8DEF300F737F3 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2839DF525E8DEF300F737F3 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 		D2BAB0B825E4148400449978 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;

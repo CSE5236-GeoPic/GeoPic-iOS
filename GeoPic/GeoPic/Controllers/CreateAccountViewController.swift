@@ -42,7 +42,7 @@ class CreateAccountViewController: UIViewController {
         firebaseCreateAccount(email: emailTextfield.text!, password: passwordTextfield.text!)
     }
     
-    // MARK: Private helper methods
+    // MARK: - Private helper methods
     /**
      Attempts to create a new user in Firebase.
      If successful, displays an alert dialog notifying the user of the success and dismisses the current modal.
@@ -78,7 +78,7 @@ class CreateAccountViewController: UIViewController {
     }
 }
 
-// MARK: Email validation function for String
+// MARK: - Email validation function for String
 fileprivate extension String {
     func isValidEmail() -> Bool {
         let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
@@ -86,7 +86,7 @@ fileprivate extension String {
     }
 }
 
-// MARK: Textfield delegate methods
+// MARK: - Textfield delegate methods
 extension CreateAccountViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField.tag {

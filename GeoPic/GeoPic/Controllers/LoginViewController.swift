@@ -63,7 +63,7 @@ class LoginViewController: UIViewController {
         performSegue(withIdentifier: K.Segues.authToCreateAcc, sender: nil)
     }
     
-    // MARK: Private methods
+    // MARK: - Private methods
     /**
      Performs login using either email and password for `LoginMethod.emailPassword` or using biometrics for `LoginMethod.biometric`.
      - Parameter method: the login method to attempt
@@ -153,7 +153,7 @@ class LoginViewController: UIViewController {
     }
 }
 
-// MARK: Textfield delegate methods
+// MARK: - Textfield delegate methods
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField.tag {
@@ -169,7 +169,7 @@ extension LoginViewController: UITextFieldDelegate {
     }
 }
 
-// MARK: Enum that defines login method
+// MARK: - Enum that defines login method
 fileprivate enum LoginMethod {
     case emailPassword
     case biometric

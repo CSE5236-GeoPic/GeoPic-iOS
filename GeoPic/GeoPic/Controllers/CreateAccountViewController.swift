@@ -78,7 +78,7 @@ class CreateAccountViewController: UIViewController {
     }
 }
 
-// MARK: - Email validation function for String
+// MARK: Email validation function for String
 fileprivate extension String {
     func isValidEmail() -> Bool {
         let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)

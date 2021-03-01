@@ -80,23 +80,15 @@ class LoginViewController: UIViewController {
             var authorizationError: NSError?
             if localAuthenticationContext.canEvaluatePolicy(LAPolicy.deviceOwnerAuthentication, error: &authorizationError) {
                 print("Biometrics is supported")
-                switch localAuthenticationContext.biometryType {
-                case .faceID:
-                    fallthrough
-                case .touchID:
-                    // for both faceID and touchID, try logging in using the email and password stored in keychain
-                    localAuthenticationContext.evaluatePolicy(LAPolicy.deviceOwnerAuthentication, localizedReason: "GeoPic uses biometrics for signin") { [self] (success, error) in
-                        if success {
-                            print("Success")
-                            // login to firebase using values stored in keychain
-                            firebaseLogin(email: keychain.get("email")!, password: keychain.get("password")!, with: method)
-                        } else {
-                            print("Error \(String(describing: error))")
-                        }
+                // for both faceID and touchID, try logging in using the email and password stored in keychain
+                localAuthenticationContext.evaluatePolicy(LAPolicy.deviceOwnerAuthentication, localizedReason: "GeoPic uses biometrics for signin") { [self] (success, error) in
+                    if success {
+                        print("Success")
+                        // login to firebase using values stored in keychain
+                        firebaseLogin(email: keychain.get("email")!, password: keychain.get("password")!, with: method)
+                    } else {
+                        print("Error \(String(describing: error))")
                     }
-                default:
-                    // should never get here
-                    print("Biometric not available")
                 }
             }
         }

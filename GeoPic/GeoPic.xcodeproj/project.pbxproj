@@ -12,7 +12,6 @@
 		55719FA725E6FC1A00390E25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55719FA425E6FC1A00390E25 /* GoogleService-Info.plist */; };
 		D27CBD1325DDC7C800BE02E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1225DDC7C800BE02E9 /* AppDelegate.swift */; };
 		D27CBD1525DDC7C800BE02E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1425DDC7C800BE02E9 /* SceneDelegate.swift */; };
-		D27CBD1725DDC7C800BE02E9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1625DDC7C800BE02E9 /* SettingsViewController.swift */; };
 		D27CBD1D25DDC7C900BE02E9 /* GeoPic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1B25DDC7C900BE02E9 /* GeoPic.xcdatamodeld */; };
 		D27CBD1F25DDC7CA00BE02E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD1E25DDC7CA00BE02E9 /* Assets.xcassets */; };
 		D27CBD2225DDC7CA00BE02E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD2025DDC7CA00BE02E9 /* LaunchScreen.storyboard */; };
@@ -23,9 +22,10 @@
 		D27CBD5A25DDCA3D00BE02E9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5925DDCA3D00BE02E9 /* FirebaseFirestore */; };
 		D27CBD5C25DDCA3D00BE02E9 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5B25DDCA3D00BE02E9 /* FirebaseDatabase */; };
 		D27CBD6425DDD38B00BE02E9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD6325DDD38B00BE02E9 /* README.md */; };
-		D2839E0625EB8FDB00F737F3 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2839E0425EB8FDB00F737F3 /* SettingsTableViewCell.swift */; };
 		D28791AB25F006A500994863 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28791A925F006A400994863 /* Settings.storyboard */; };
 		D28791B025F006AE00994863 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D28791AF25F006AE00994863 /* SettingsTableViewCell.xib */; };
+		D28791C225F0074300994863 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28791C025F0074300994863 /* SettingsViewController.swift */; };
+		D28791C325F0074300994863 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28791C125F0074300994863 /* SettingsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,6 @@
 		D27CBD0F25DDC7C800BE02E9 /* GeoPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27CBD1225DDC7C800BE02E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D27CBD1425DDC7C800BE02E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D27CBD1625DDC7C800BE02E9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D27CBD1C25DDC7C900BE02E9 /* GeoPic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GeoPic.xcdatamodel; sourceTree = "<group>"; };
 		D27CBD1E25DDC7CA00BE02E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D27CBD2125DDC7CA00BE02E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,9 +61,10 @@
 		D27CBD3725DDC7CB00BE02E9 /* GeoPicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPicUITests.swift; sourceTree = "<group>"; };
 		D27CBD3925DDC7CB00BE02E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27CBD6325DDD38B00BE02E9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		D2839E0425EB8FDB00F737F3 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		D28791AA25F006A400994863 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		D28791AF25F006AE00994863 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		D28791C025F0074300994863 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D28791C125F0074300994863 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,8 +161,8 @@
 		D27CBD4F25DDC80A00BE02E9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D27CBD1625DDC7C800BE02E9 /* SettingsViewController.swift */,
-				D2839E0425EB8FDB00F737F3 /* SettingsTableViewCell.swift */,
+				D28791C125F0074300994863 /* SettingsTableViewCell.swift */,
+				D28791C025F0074300994863 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -321,11 +321,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D27CBD1725DDC7C800BE02E9 /* SettingsViewController.swift in Sources */,
 				D27CBD1325DDC7C800BE02E9 /* AppDelegate.swift in Sources */,
 				D27CBD1D25DDC7C900BE02E9 /* GeoPic.xcdatamodeld in Sources */,
-				D2839E0625EB8FDB00F737F3 /* SettingsTableViewCell.swift in Sources */,
 				D27CBD1525DDC7C800BE02E9 /* SceneDelegate.swift in Sources */,
+				D28791C325F0074300994863 /* SettingsTableViewCell.swift in Sources */,
+				D28791C225F0074300994863 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

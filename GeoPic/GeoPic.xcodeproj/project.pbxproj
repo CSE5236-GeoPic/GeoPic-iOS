@@ -32,7 +32,7 @@
 		D27CBD5A25DDCA3D00BE02E9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5925DDCA3D00BE02E9 /* FirebaseFirestore */; };
 		D27CBD5C25DDCA3D00BE02E9 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5B25DDCA3D00BE02E9 /* FirebaseDatabase */; };
 		D27CBD6425DDD38B00BE02E9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD6325DDD38B00BE02E9 /* README.md */; };
-		D292042425EF8B56006BA8B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D292042225EF8B56006BA8B3 /* Main.storyboard */; };
+		D287919325EF94A600994863 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D287919125EF94A600994863 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +72,7 @@
 		D27CBD3725DDC7CB00BE02E9 /* GeoPicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPicUITests.swift; sourceTree = "<group>"; };
 		D27CBD3925DDC7CB00BE02E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27CBD6325DDD38B00BE02E9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		D292042325EF8B56006BA8B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D287919225EF94A600994863 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +189,7 @@
 		D27CBD5325DDC81500BE02E9 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				D292042225EF8B56006BA8B3 /* Main.storyboard */,
+				D287919125EF94A600994863 /* Main.storyboard */,
 				D27CBD2025DDC7CA00BE02E9 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -308,7 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D27CBD2225DDC7CA00BE02E9 /* LaunchScreen.storyboard in Resources */,
-				D292042425EF8B56006BA8B3 /* Main.storyboard in Resources */,
+				D287919325EF94A600994863 /* Main.storyboard in Resources */,
 				D27CBD1F25DDC7CA00BE02E9 /* Assets.xcassets in Resources */,
 				55719FA525E6FC1A00390E25 /* GoogleService-Info.plist in Resources */,
 				D27CBD6425DDD38B00BE02E9 /* README.md in Resources */,
@@ -393,10 +393,10 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		D292042225EF8B56006BA8B3 /* Main.storyboard */ = {
+		D287919125EF94A600994863 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D292042325EF8B56006BA8B3 /* Base */,
+				D287919225EF94A600994863 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

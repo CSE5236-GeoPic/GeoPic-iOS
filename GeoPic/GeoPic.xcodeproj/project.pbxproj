@@ -34,12 +34,15 @@
 		D27CBD5A25DDCA3D00BE02E9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5925DDCA3D00BE02E9 /* FirebaseFirestore */; };
 		D27CBD5C25DDCA3D00BE02E9 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5B25DDCA3D00BE02E9 /* FirebaseDatabase */; };
 		D27CBD6425DDD38B00BE02E9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD6325DDD38B00BE02E9 /* README.md */; };
-
 		D287919325EF94A600994863 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D287919125EF94A600994863 /* Main.storyboard */; };
 		D2839DF725E8DEF300F737F3 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D2839DF625E8DEF300F737F3 /* KeychainSwift */; };
 		D2BAB0B325E411D100449978 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BAB0B225E411D100449978 /* CreateAccountViewController.swift */; };
 		D2BAB0B925E4148400449978 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D2BAB0B825E4148400449978 /* IQKeyboardManagerSwift */; };
 		D2BAB0C425E4188A00449978 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BAB0C325E4188A00449978 /* Constants.swift */; };
+		D28791AB25F006A500994863 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28791A925F006A400994863 /* Settings.storyboard */; };
+		D28791B025F006AE00994863 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D28791AF25F006AE00994863 /* SettingsTableViewCell.xib */; };
+		D28791C225F0074300994863 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28791C025F0074300994863 /* SettingsViewController.swift */; };
+		D28791C325F0074300994863 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28791C125F0074300994863 /* SettingsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +87,10 @@
 		D287919225EF94A600994863 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2BAB0B225E411D100449978 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		D2BAB0C325E4188A00449978 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D28791AA25F006A400994863 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		D28791AF25F006AE00994863 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		D28791C025F0074300994863 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D28791C125F0074300994863 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +205,8 @@
 				55719FB125E70A9B00390E25 /* MainViewController.swift */,
 				D27CBD1625DDC7C800BE02E9 /* LoginViewController.swift */,
 				D2BAB0B225E411D100449978 /* CreateAccountViewController.swift */,
+				D28791C125F0074300994863 /* SettingsTableViewCell.swift */,
+				D28791C025F0074300994863 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -207,6 +216,8 @@
 			children = (
 				D287919125EF94A600994863 /* Main.storyboard */,
 				D27CBD1825DDC7C900BE02E9 /* Auth.storyboard */,
+				D28791AF25F006AE00994863 /* SettingsTableViewCell.xib */,
+				D28791A925F006A400994863 /* Settings.storyboard */,
 				D27CBD2025DDC7CA00BE02E9 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -328,12 +339,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D28791B025F006AE00994863 /* SettingsTableViewCell.xib in Resources */,
 				D27CBD2225DDC7CA00BE02E9 /* LaunchScreen.storyboard in Resources */,
 				D287919325EF94A600994863 /* Main.storyboard in Resources */,
 				D27CBD1F25DDC7CA00BE02E9 /* Assets.xcassets in Resources */,
 				55719FA525E6FC1A00390E25 /* GoogleService-Info.plist in Resources */,
 				D27CBD6425DDD38B00BE02E9 /* README.md in Resources */,
 				D27CBD1A25DDC7C900BE02E9 /* Auth.storyboard in Resources */,
+				D28791AB25F006A500994863 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +382,8 @@
 				D27CBD1525DDC7C800BE02E9 /* SceneDelegate.swift in Sources */,
 				55719FB225E70A9B00390E25 /* MainViewController.swift in Sources */,
 				D2BAB0C425E4188A00449978 /* Constants.swift in Sources */,
+				D28791C325F0074300994863 /* SettingsTableViewCell.swift in Sources */,
+				D28791C225F0074300994863 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,20 +433,28 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-        D27CBD1825DDC7C900BE02E9 /* Auth.storyboard */ = {
-            isa = PBXVariantGroup;
-            children = (
-                D27CBD1925DDC7C900BE02E9 /* Base */,
-            );
-            name = Auth.storyboard;
-            sourceTree = "<group>";
-        };
+    D27CBD1825DDC7C900BE02E9 /* Auth.storyboard */ = {
+      isa = PBXVariantGroup;
+      children = (
+        D27CBD1925DDC7C900BE02E9 /* Base */,
+      );
+      name = Auth.storyboard;
+      sourceTree = "<group>";
+    };
 		D287919125EF94A600994863 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D287919225EF94A600994863 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D28791A925F006A400994863 /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D28791AA25F006A400994863 /* Base */,
+			);
+			name = Settings.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingsViewController: UIViewController {
 
@@ -44,8 +45,24 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // first, deselect table cell
         tableView.deselectRow(at: indexPath, animated: true)
-        // perform segue or action
-        displayAlert(action: settingsItems[indexPath.row])
+        
+        if settingsItems[indexPath.row] == "Log Out" {
+            // log out current user
+            do {
+                try Auth.auth().signOut()
+            } catch {
+                let alert = UIAlertController(title: "Error", message: "There was a problem signing out. Please try again later.", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                present(alert, animated: true, completion: nil)
+                return
+            }
+            self.navigationController?.popToRootViewController(animated: true)
+        } else {
+            #warning("Work in progress")
+            // perform segue or action
+            displayAlert(action: settingsItems[indexPath.row])
+        }
     }
 }
 

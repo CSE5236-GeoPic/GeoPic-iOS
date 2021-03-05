@@ -39,6 +39,9 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                 <state key="normal" image="gearshape.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="settingsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N6Q-kT-CH3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -49,6 +52,7 @@
                         <outlet property="mapView" destination="bRq-Jf-ret" id="49g-Gj-kzk"/>
                         <outlet property="settingsButton" destination="ifj-2X-E5r" id="W0d-FU-Pc2"/>
                         <segue destination="Bor-mj-4rf" kind="presentation" identifier="pictureSegue" modalPresentationStyle="automatic" id="oHg-H8-Qzm"/>
+                        <segue destination="lQV-zn-bYl" kind="show" identifier="mainToSettings" id="NkG-ow-bOW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -124,6 +128,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Xn-fb-Cgp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1005.7971014492755" y="64.955357142857139"/>
+        </scene>
+        <!--SettingsViewController-->
+        <scene sceneID="96q-AS-ZjZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" referencedIdentifier="SettingsViewController" id="lQV-zn-bYl" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="4wB-Zq-Ojf"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fnh-ca-yKO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="901" y="560"/>
         </scene>
     </scenes>
     <resources>

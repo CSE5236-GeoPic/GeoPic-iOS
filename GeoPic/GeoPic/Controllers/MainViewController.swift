@@ -50,6 +50,20 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // hide navigation bar
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // unhide navigation bar
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
     private func loadPins(){
         let db = Firestore.firestore()
         db.collection("photos").getDocuments() { (querySnapshot, err) in
@@ -86,6 +100,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         // Pass pin to segue
         let pin = view.annotation as! Pin
         performSegue(withIdentifier: "pictureSegue", sender: pin)
+    }
+    
+    @IBAction func settingsPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: K.Segues.mainToSettings, sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

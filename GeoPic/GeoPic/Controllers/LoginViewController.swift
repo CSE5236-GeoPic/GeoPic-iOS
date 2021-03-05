@@ -11,7 +11,7 @@ import LocalAuthentication
 import Firebase
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var createAccBtn: UIButton!
     @IBOutlet weak var emailTextfield: UITextField!
@@ -49,6 +49,20 @@ class LoginViewController: UIViewController {
         if let email = defaults.string(forKey: "email") {
             emailTextfield.text = email
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // hides navigation bar when this view is loaded
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // unhides navigatino bar when this view is disappearing
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     @IBAction func loginPressed(_ sender: UIButton) {
@@ -127,19 +141,21 @@ class LoginViewController: UIViewController {
                         // to enroll in biometrics, save the email and password to the keychain
                         strongSelf.keychain.set(email, forKey: "email")
                         strongSelf.keychain.set(password, forKey: "password")
+                        
+                        // perform segue to main screen
+                        strongSelf.performSegue(withIdentifier: K.Segues.loginToMain, sender: nil)
                     }
-                    let noAction = UIAlertAction(title: "No", style: .default, handler: nil)
+                    let noAction = UIAlertAction(title: "No", style: .default) { (action) in
+                        // perform segue to main screen
+                        strongSelf.performSegue(withIdentifier: K.Segues.loginToMain, sender: nil)
+                    }
                     alert.addAction(yesAction)
                     alert.addAction(noAction)
                     strongSelf.present(alert, animated: true)
+                } else {
+                    // perform segue to main screen
+                    strongSelf.performSegue(withIdentifier: K.Segues.loginToMain, sender: nil)
                 }
-                #warning("performSegue not implemented")
-                let alert = UIAlertController(title: "Login Successful", message: "WIP: Segue should happen to main screen here", preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .cancel) { handler in
-                    strongSelf.emailTextfield.becomeFirstResponder()
-                }
-                alert.addAction(action)
-                strongSelf.present(alert, animated: true)
             }
         }
     }

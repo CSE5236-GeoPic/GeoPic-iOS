@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9gg-99-36Q">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GeoPic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHr-LR-J9e">
-                                <rect key="frame" x="91.666666666666671" y="84" width="206.66666666666663" height="71.666666666666686"/>
+                                <rect key="frame" x="91.666666666666671" y="128" width="206.66666666666663" height="71.666666666666686"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="60"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -104,6 +104,7 @@
                             <constraint firstItem="AHr-LR-J9e" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="vXA-2G-HHk"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="lF5-p7-tkR"/>
                     <connections>
                         <outlet property="biometricBtn" destination="HpJ-Ju-ooo" id="mr8-cR-eje"/>
                         <outlet property="createAccBtn" destination="CbP-jQ-jMo" id="Lnc-uA-0CA"/>
@@ -111,11 +112,22 @@
                         <outlet property="loginBtn" destination="jk8-LN-QRJ" id="mco-9w-dx8"/>
                         <outlet property="passwordTextfield" destination="bY6-Pp-o4w" id="qfw-3z-t77"/>
                         <segue destination="esK-55-FWA" kind="presentation" identifier="authToCreateAcc" id="acj-mE-484"/>
+                        <segue destination="WSm-q3-QIc" kind="show" identifier="loginToMain" id="dWq-rr-5qa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204.34782608695653" y="118.52678571428571"/>
+            <point key="canvasLocation" x="724.61538461538464" y="118.00947867298578"/>
+        </scene>
+        <!--MainViewController-->
+        <scene sceneID="nzT-EW-cWI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="MainViewController" id="WSm-q3-QIc" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="y4P-lj-Xow"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iv4-PT-ShI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1665.3846153846152" y="-128.67298578199052"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="Lgh-a5-89u">
@@ -226,7 +238,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iRo-GZ-9Ur" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="877" y="119"/>
+            <point key="canvasLocation" x="1760" y="497.63033175355446"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="of3-pE-6tv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9gg-99-36Q" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RRP-p1-U4o">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="hdb-qS-lLa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XJo-8G-PJd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-204.61538461538461" y="118.00947867298578"/>
         </scene>
     </scenes>
     <resources>

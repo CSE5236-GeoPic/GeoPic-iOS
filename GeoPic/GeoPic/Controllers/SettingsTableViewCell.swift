@@ -9,8 +9,8 @@ import UIKit
 
 class SettingsTableViewCell: UITableViewCell {
     
-    let identifier = "settingsCell"
-    let nib = UINib(nibName: "SettingsTableViewCell", bundle: nil)
+    static let identifier = "settingsCell"
+    static let nib = UINib(nibName: "SettingsTableViewCell", bundle: nil)
 
     @IBOutlet weak var settingTitle: UILabel!
     

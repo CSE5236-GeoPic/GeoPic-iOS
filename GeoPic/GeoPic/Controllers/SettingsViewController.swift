@@ -23,7 +23,7 @@ class SettingsViewController: UIViewController {
         table.dataSource = self
         table.delegate = self
         // register table cell to display on table
-        table.register(SettingsTableViewCell().nib, forCellReuseIdentifier: SettingsTableViewCell().identifier)
+        table.register(SettingsTableViewCell.nib, forCellReuseIdentifier: SettingsTableViewCell.identifier)
     }
 
 
@@ -37,7 +37,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell().identifier) as! SettingsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.identifier) as! SettingsTableViewCell
         cell.settingTitle.text = settingsItems[indexPath.row]
         return cell
     }

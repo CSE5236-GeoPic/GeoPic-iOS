@@ -38,7 +38,6 @@ class CreateAccountViewController: UIViewController {
     }
     
     @IBAction func createAccPressed(_ sender: UIButton) {
-        #warning("Do we need to check for valid password?")
         firebaseCreateAccount(email: emailTextfield.text!, password: passwordTextfield.text!)
     }
     

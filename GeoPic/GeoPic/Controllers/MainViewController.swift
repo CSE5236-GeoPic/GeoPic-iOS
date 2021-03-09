@@ -99,7 +99,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // Pass pin to segue
         let pin = view.annotation as! Pin
-        performSegue(withIdentifier: "pictureSegue", sender: pin)
+        performSegue(withIdentifier: K.Segues.mainToPicture, sender: pin)
     }
     
     @IBAction func settingsPressed(_ sender: UIButton) {
@@ -107,7 +107,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "pictureSegue" {
+        if segue.identifier == K.Segues.mainToPicture {
             // Pass pin to the PictureVC
             guard let pin = sender as? Pin else { return }
             if let destinationVC = segue.destination as? PictureViewController {

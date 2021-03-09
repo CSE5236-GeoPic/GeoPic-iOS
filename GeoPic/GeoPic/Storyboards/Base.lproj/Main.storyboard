@@ -51,7 +51,7 @@
                         <outlet property="cameraButton" destination="JJ7-EY-VMc" id="4KP-Xp-0bR"/>
                         <outlet property="mapView" destination="bRq-Jf-ret" id="49g-Gj-kzk"/>
                         <outlet property="settingsButton" destination="ifj-2X-E5r" id="W0d-FU-Pc2"/>
-                        <segue destination="Bor-mj-4rf" kind="presentation" identifier="pictureSegue" modalPresentationStyle="automatic" id="oHg-H8-Qzm"/>
+                        <segue destination="Bor-mj-4rf" kind="presentation" identifier="mainToPicture" modalPresentationStyle="automatic" id="oHg-H8-Qzm"/>
                         <segue destination="lQV-zn-bYl" kind="show" identifier="mainToSettings" id="NkG-ow-bOW"/>
                     </connections>
                 </viewController>

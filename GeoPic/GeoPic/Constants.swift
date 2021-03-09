@@ -12,5 +12,6 @@ struct K {
         static let authToCreateAcc = "authToCreateAcc"
         static let loginToMain = "loginToMain"
         static let mainToSettings = "mainToSettings"
+        static let mainToPicture = "mainToPicture"
     }
 }

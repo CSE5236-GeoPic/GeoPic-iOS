@@ -17,6 +17,8 @@ class CreateAccountViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     
+    var delegate: AuthenticationDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -79,7 +81,9 @@ class CreateAccountViewController: UIViewController {
                     } else {
                         let alert = UIAlertController(title: "Account Created!", message: "Your account was successfully created!", preferredStyle: .alert)
                         let action = UIAlertAction(title: "OK", style: .default) { handler in
-                            self.dismiss(animated: true, completion: nil)
+                            self.dismiss(animated: true) {
+                                self.delegate?.authenticationDelegate(true, email: self.emailTextfield.text!, name: self.nameTextfield.text!)
+                            }
                         }
                         alert.addAction(action)
                         self.present(alert, animated: true, completion: nil)

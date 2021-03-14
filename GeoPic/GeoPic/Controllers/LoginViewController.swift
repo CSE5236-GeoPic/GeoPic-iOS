@@ -77,6 +77,13 @@ class LoginViewController: UIViewController {
         performSegue(withIdentifier: K.Segues.authToCreateAcc, sender: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segues.authToCreateAcc {
+            let vc = segue.destination as! CreateAccountViewController
+            vc.delegate = self
+        }
+    }
+    
     // MARK: - Private methods
     /**
      Performs login using either email and password for `LoginMethod.emailPassword` or using biometrics for `LoginMethod.biometric`.
@@ -174,6 +181,18 @@ extension LoginViewController: UITextFieldDelegate {
             print("should never get here")
         }
         return true
+    }
+}
+
+// MARK: - Authentication Delegate method
+extension LoginViewController: AuthenticationDelegate {
+    func authenticationDelegate(_ userCreated: Bool, email: String, name: String) {
+        self.emailTextfield.text = email
+        defaults.setValue(email, forKey: "email")
+        // if signed in, make segue to main screen
+        if let _ = Auth.auth().currentUser {
+            performSegue(withIdentifier: K.Segues.loginToMain, sender: nil)
+        }
     }
 }
 

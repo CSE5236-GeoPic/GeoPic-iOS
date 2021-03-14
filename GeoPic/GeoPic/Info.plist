@@ -20,6 +20,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSFaceIDUsageDescription</key>
+	<string>GeoPic can use biometrics to sign in.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>TODO</string>
 	<key>UIApplicationSceneManifest</key>
@@ -55,8 +57,6 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>NSFaceIDUsageDescription</key>
-	<string>GeoPic can use biometrics to sign in.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -64,5 +64,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>GeoPic would like to access your camera.</string>
 </dict>
 </plist>

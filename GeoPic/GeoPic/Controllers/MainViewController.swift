@@ -3,18 +3,20 @@
 //  GeoPic
 //
 //  Created by Dave Becker on 2/24/21.
-//
+//  Edited by Jonathan Nutter on 3/13/21
 
 import UIKit
 import MapKit
 import Firebase
+import FirebaseStorage
 
-class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet private var mapView: MKMapView!
     @IBOutlet private var cameraButton: UIButton!
     @IBOutlet private var settingsButton: UIButton!
     
+    private let storage = Storage.storage().reference()
     var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -45,8 +47,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         settingsButton.imageView?.contentMode = .scaleAspectFit
         settingsButton.layer.masksToBounds = true
         settingsButton.layer.cornerRadius = settingsButton.frame.width/2
-        
+        activityIndicator.hidesWhenStopped = true
         loadPins()
+        
         
     }
     
@@ -62,6 +65,84 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         
         // unhide navigation bar
         self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    //Activity indicator with text
+    //From https://stackoverflow.com/questions/28785715/how-to-display-an-activity-indicator-with-text-on-ios-8-with-swift
+    
+    var activityIndicator = UIActivityIndicatorView()
+    var strLabel = UILabel()
+    let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    func activityIndicator(_ title: String) {
+        strLabel.removeFromSuperview()
+        activityIndicator.removeFromSuperview()
+        effectView.removeFromSuperview()
+        strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
+        strLabel.text = title
+        strLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        strLabel.textColor = UIColor(white: 0.9, alpha: 0.7)
+        effectView.frame = CGRect(x: view.frame.midX - strLabel.frame.width/2, y: view.frame.midY - strLabel.frame.height/2 , width: 160, height: 46)
+        effectView.layer.cornerRadius = 15
+        effectView.layer.masksToBounds = true
+        activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
+        activityIndicator.startAnimating()
+        effectView.contentView.addSubview(activityIndicator)
+        effectView.contentView.addSubview(strLabel)
+        view.addSubview(effectView)
+    }
+    
+    // Opens native iOS camera when pressing camera button
+    @IBAction func openCamera(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
+        }
+        guard let imageData = image.pngData() else {
+            return
+        }
+        //creates uuid for each photo
+        let uuid = UUID().uuidString
+        self.view.isUserInteractionEnabled = false
+        //show activity indicator and stop allowing user inputs when uploading photo
+        activityIndicator("Uploading")
+        print("Start Spinning")
+        let uploadPhoto = storage.child("images/\(uuid).png").putData(imageData, metadata: nil, completion: {_, error in
+            guard error == nil else {
+                print("Failed to Upload")
+                return
+            }
+            self.storage.child("images/\(uuid).png").downloadURL(completion: { url, error in
+                guard let url = url, error == nil else {
+                    return
+                }
+                let urlString = url.absoluteString
+                print("Download URL: \(urlString)")
+            })
+        })
+        //stop spinning and give back control upon successful upload, or failure
+        uploadPhoto.observe(.success) {snapshot in
+            self.effectView.removeFromSuperview()
+            print("Stop Spinning")
+            self.view.isUserInteractionEnabled = true
+        }
+        uploadPhoto.observe(.failure) {snapshot in
+            self.effectView.removeFromSuperview()
+            print("Stop Spinning")
+            print("Error Uploading")
+            self.view.isUserInteractionEnabled = true
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
     
     private func loadPins(){
@@ -124,6 +205,4 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             let viewRegion = MKCoordinateRegion(center: (userLocation?.coordinate)!, latitudinalMeters: 600, longitudinalMeters: 600)
             self.mapView.setRegion(viewRegion, animated: true)
         }
-
-
 }

@@ -13,5 +13,6 @@ struct K {
         static let loginToMain = "loginToMain"
         static let mainToSettings = "mainToSettings"
         static let mainToPicture = "mainToPicture"
+        static let settingsToChange = "settingsToChange"
     }
 }

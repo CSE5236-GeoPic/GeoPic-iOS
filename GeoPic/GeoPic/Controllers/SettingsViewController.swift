@@ -59,9 +59,20 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             }
             self.navigationController?.popToRootViewController(animated: true)
         } else {
-            #warning("Work in progress")
-            // perform segue or action
-            displayAlert(action: settingsItems[indexPath.row])
+            // make segue to the change view
+            performSegue(withIdentifier: K.Segues.settingsToChange, sender: settingsItems[indexPath.row])
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segues.settingsToChange {
+            let vc = segue.destination as! SettingsChangeViewController
+            vc.pageTitle = sender as? String
+            if (sender as! String) == "Change Name" {
+                vc.changeType = .name
+            } else {
+                vc.changeType = .password
+            }
         }
     }
 }

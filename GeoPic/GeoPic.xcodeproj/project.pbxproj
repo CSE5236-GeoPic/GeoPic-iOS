@@ -20,6 +20,7 @@
 		55719FCF25E8334700390E25 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FCE25E8334700390E25 /* PictureViewController.swift */; };
 		55719FD325E8334A00390E25 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FCE25E8334700390E25 /* PictureViewController.swift */; };
 		55719FD425E8334A00390E25 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FCE25E8334700390E25 /* PictureViewController.swift */; };
+		D272DD1725FF460D007FED1D /* SettingsChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D272DD1625FF460D007FED1D /* SettingsChangeViewController.swift */; };
 		D27CBD1325DDC7C800BE02E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1225DDC7C800BE02E9 /* AppDelegate.swift */; };
 		D27CBD1525DDC7C800BE02E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1425DDC7C800BE02E9 /* SceneDelegate.swift */; };
 		D27CBD1725DDC7C800BE02E9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1625DDC7C800BE02E9 /* LoginViewController.swift */; };
@@ -69,6 +70,7 @@
 		55719FB925E7F20200390E25 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		55719FC425E810F500390E25 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		55719FCE25E8334700390E25 /* PictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PictureViewController.swift; path = GeoPic/Controllers/PictureViewController.swift; sourceTree = SOURCE_ROOT; };
+		D272DD1625FF460D007FED1D /* SettingsChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangeViewController.swift; sourceTree = "<group>"; };
 		D27CBD0F25DDC7C800BE02E9 /* GeoPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27CBD1225DDC7C800BE02E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D27CBD1425DDC7C800BE02E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				D2BAB0B225E411D100449978 /* CreateAccountViewController.swift */,
 				D28791C125F0074300994863 /* SettingsTableViewCell.swift */,
 				D28791C025F0074300994863 /* SettingsViewController.swift */,
+				D272DD1625FF460D007FED1D /* SettingsChangeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 			files = (
 				D2BAB0B325E411D100449978 /* CreateAccountViewController.swift in Sources */,
 				D27CBD1725DDC7C800BE02E9 /* LoginViewController.swift in Sources */,
+				D272DD1725FF460D007FED1D /* SettingsChangeViewController.swift in Sources */,
 				D2B2E55925FD83DF00119C03 /* AuthenticationDelegate.swift in Sources */,
 				D27CBD1325DDC7C800BE02E9 /* AppDelegate.swift in Sources */,
 				55719FCF25E8334700390E25 /* PictureViewController.swift in Sources */,

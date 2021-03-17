@@ -31,6 +31,9 @@
                                 <state key="normal">
                                     <imageReference key="image" image="camera.fill" catalog="system" symbolScale="default"/>
                                 </state>
+                                <connections>
+                                    <action selector="openCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="55X-Xh-y51"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifj-2X-E5r">
                                 <rect key="frame" x="334" y="787" width="60" height="60"/>

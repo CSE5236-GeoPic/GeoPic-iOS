@@ -181,7 +181,7 @@
         <!--Navigation Controller-->
         <scene sceneID="SOa-R8-gvu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zSs-1L-CeY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SettingsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="zSs-1L-CeY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Nnb-cM-J5B">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>

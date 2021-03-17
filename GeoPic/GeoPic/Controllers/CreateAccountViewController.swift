@@ -17,6 +17,8 @@ class CreateAccountViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     
+    var delegate: AuthenticationDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,6 +48,7 @@ class CreateAccountViewController: UIViewController {
      Attempts to create a new user in Firebase.
      If successful, displays an alert dialog notifying the user of the success and dismisses the current modal.
      If unsuccessful, displays an alert dialog notifying the user of the failure.
+     Upon successful user creation, `users` collection on Firestore will have the user with document ID of `Auth.auth().currentUser.uid` value with the user's full name.
      - Parameter email: email of new user
      - Parameter password: password of new user
      */
@@ -65,13 +68,28 @@ class CreateAccountViewController: UIViewController {
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
             } else {
-                #warning("Need to add this new user to the \"users\" collection in Firestore")
-                let alert = UIAlertController(title: "Account Created!", message: "Your account was successfully created!", preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .default) { handler in
-                    self.dismiss(animated: true, completion: nil)
+                let documentId = authResult!.user.uid
+                // Add a new document in collection "users"
+                Firestore.firestore().collection("users").document(documentId).setData([
+                    "name": self.nameTextfield.text!
+                ]) { err in
+                    if err != nil {
+                        let alert = UIAlertController(title: "Something went wrong", message: "There was a problem while creating your account. Please try again later", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        alert.addAction(action)
+                        self.present(alert, animated: true, completion: nil)
+                    } else {
+                        let alert = UIAlertController(title: "Account Created!", message: "Your account was successfully created!", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "OK", style: .default) { handler in
+                            self.dismiss(animated: true) {
+                                self.delegate?.authenticationDelegate(true, email: self.emailTextfield.text!, name: self.nameTextfield.text!)
+                            }
+                        }
+                        alert.addAction(action)
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
-                alert.addAction(action)
-                self.present(alert, animated: true, completion: nil)
+                
             }
         }
     }

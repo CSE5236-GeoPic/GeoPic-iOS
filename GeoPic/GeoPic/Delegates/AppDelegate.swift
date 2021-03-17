@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // only enable IQKeyboardManager for certain view controllers
         IQKeyboardManager.shared.enabledToolbarClasses.append(LoginViewController.self)
         IQKeyboardManager.shared.enabledToolbarClasses.append(CreateAccountViewController.self)
+        IQKeyboardManager.shared.enabledToolbarClasses.append(SettingsChangeViewController.self)
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
         return true

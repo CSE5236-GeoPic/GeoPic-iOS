@@ -25,7 +25,7 @@
 	<key>NSFaceIDUsageDescription</key>
 	<string>GeoPic can use biometrics to sign in.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>TODO</string>
+	<string>GeoPic would like to access your location.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

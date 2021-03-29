@@ -153,8 +153,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             } else {
                 for document in querySnapshot!.documents {
                     let url = URL(string: document.data()["photo_url"] as! String)
-                    let imageData = try? Data(contentsOf: url!)
-                    let image = UIImage(data: imageData!)
                     
                     let point = document.data()["location"] as! GeoPoint
                     let coord = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
@@ -168,7 +166,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
                     let timestamp = document.data()["date"] as! Timestamp
                     let date = timestamp.dateValue()
 
-                    let pin = Pin(id: pinID, image: image, coordinate: coord, score: score, userID: userID, date: date)
+                    let pin = Pin(id: pinID, url: url, coordinate: coord, score: score, userID: userID, date: date)
                     
                     self.mapView.addAnnotation(pin)
                 }

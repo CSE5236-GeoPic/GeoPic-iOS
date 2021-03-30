@@ -15,7 +15,6 @@ class PictureViewController: UIViewController {
     @IBOutlet private var nameLabel: UILabel!
     @IBOutlet private var dateLabel: UILabel!
     @IBOutlet private var scoreLabel: UILabel!
-    @IBOutlet private var backButton: UIButton!
     
     var pin: Pin?
 
@@ -39,7 +38,7 @@ class PictureViewController: UIViewController {
         dateLabel.text = formatter.string(from: (pin?.date)!)
 
     }
-    @IBAction func back(sender: UIButton){
+    @IBAction func back(sender: UIBarButtonItem){
         self.dismiss(animated: true, completion: nil)
     }
 

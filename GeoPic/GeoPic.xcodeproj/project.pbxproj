@@ -20,6 +20,7 @@
 		55719FCF25E8334700390E25 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FCE25E8334700390E25 /* PictureViewController.swift */; };
 		55719FD325E8334A00390E25 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FCE25E8334700390E25 /* PictureViewController.swift */; };
 		55719FD425E8334A00390E25 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FCE25E8334700390E25 /* PictureViewController.swift */; };
+		55D65EB6261268A500EFB59C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 55D65EB5261268A500EFB59C /* Kingfisher */; };
 		D272DD1725FF460D007FED1D /* SettingsChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D272DD1625FF460D007FED1D /* SettingsChangeViewController.swift */; };
 		D27CBD1325DDC7C800BE02E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1225DDC7C800BE02E9 /* AppDelegate.swift */; };
 		D27CBD1525DDC7C800BE02E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD1425DDC7C800BE02E9 /* SceneDelegate.swift */; };
@@ -106,6 +107,7 @@
 				D2BAB0B925E4148400449978 /* IQKeyboardManagerSwift in Frameworks */,
 				D27CBD5625DDCA3D00BE02E9 /* FirebaseStorage in Frameworks */,
 				D27CBD5825DDCA3D00BE02E9 /* FirebaseAuth in Frameworks */,
+				55D65EB6261268A500EFB59C /* Kingfisher in Frameworks */,
 				55719FBA25E7F20200390E25 /* MapKit.framework in Frameworks */,
 				D27CBD5C25DDCA3D00BE02E9 /* FirebaseDatabase in Frameworks */,
 				D27CBD5A25DDCA3D00BE02E9 /* FirebaseFirestore in Frameworks */,
@@ -252,6 +254,7 @@
 				D27CBD5B25DDCA3D00BE02E9 /* FirebaseDatabase */,
 				D2BAB0B825E4148400449978 /* IQKeyboardManagerSwift */,
 				D2839DF625E8DEF300F737F3 /* KeychainSwift */,
+				55D65EB5261268A500EFB59C /* Kingfisher */,
 			);
 			productName = GeoPic;
 			productReference = D27CBD0F25DDC7C800BE02E9 /* GeoPic.app */;
@@ -328,6 +331,7 @@
 				D27CBD5425DDCA3D00BE02E9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				D2BAB0B725E4148400449978 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				D2839DF525E8DEF300F737F3 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				55D65EB4261268A500EFB59C /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = D27CBD1025DDC7C800BE02E9 /* Products */;
 			projectDirPath = "";
@@ -748,6 +752,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		55D65EB4261268A500EFB59C /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		D27CBD5425DDCA3D00BE02E9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -775,6 +787,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		55D65EB5261268A500EFB59C /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55D65EB4261268A500EFB59C /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		D27CBD5525DDCA3D00BE02E9 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D27CBD5425DDCA3D00BE02E9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -3,7 +3,7 @@
 //  GeoPic
 //
 //  Created by Dave Becker on 2/24/21.
-//  Edited by Jonathan Nutter on 3/13/21
+//
 
 import UIKit
 import MapKit
@@ -95,10 +95,18 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     
     // Opens native iOS camera when pressing camera button
     @IBAction func openCamera(_ sender: Any) {
-        let picker = UIImagePickerController()
-        picker.sourceType = .camera
-        picker.delegate = self
-        present(picker, animated: true)
+        // Do something else for a simulator because it will crash
+        if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            picker.delegate = self
+            present(picker, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Unable to open camera", message: "This device does not have a camera", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -162,8 +170,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             } else {
                 for document in querySnapshot!.documents {
                     let url = URL(string: document.data()["photo_url"] as! String)
-                    let imageData = try? Data(contentsOf: url!)
-                    let image = UIImage(data: imageData!)
                     
                     let point = document.data()["location"] as! GeoPoint
                     let coord = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
@@ -177,7 +183,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
                     let timestamp = document.data()["date"] as! Timestamp
                     let date = timestamp.dateValue()
 
-                    let pin = Pin(id: pinID, image: image, coordinate: coord, score: score, userID: userID, date: date)
+                    let pin = Pin(id: pinID, url: url, coordinate: coord, score: score, userID: userID, date: date)
                     
                     self.mapView.addAnnotation(pin)
                 }

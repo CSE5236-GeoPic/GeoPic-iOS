@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 class PictureViewController: UIViewController {
     
@@ -31,7 +32,7 @@ class PictureViewController: UIViewController {
             }
         }
         
-        imageView.image = pin?.image
+        imageView.kf.setImage(with: pin?.url)
         scoreLabel.text = String((pin?.score)!)
         let formatter = DateFormatter()
         formatter.dateStyle = .short

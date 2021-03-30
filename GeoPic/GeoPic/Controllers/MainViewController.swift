@@ -94,10 +94,18 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     
     // Opens native iOS camera when pressing camera button
     @IBAction func openCamera(_ sender: Any) {
-        let picker = UIImagePickerController()
-        picker.sourceType = .camera
-        picker.delegate = self
-        present(picker, animated: true)
+        // Do something else for a simulator because it will crash
+        if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            picker.delegate = self
+            present(picker, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Unable to open camera", message: "This device does not have a camera", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

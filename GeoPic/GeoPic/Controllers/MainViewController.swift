@@ -3,10 +3,11 @@
 //  GeoPic
 //
 //  Created by Dave Becker on 2/24/21.
-//  Edited by Jonathan Nutter on 3/13/21
+//
 
 import UIKit
 import MapKit
+import CoreLocation
 import Firebase
 import FirebaseStorage
 
@@ -118,6 +119,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         }
         //creates uuid for each photo
         let uuid = UUID().uuidString
+        let db = Firestore.firestore()
         self.view.isUserInteractionEnabled = false
         //show activity indicator and stop allowing user inputs when uploading photo
         activityIndicator("Uploading")
@@ -133,6 +135,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
                 }
                 let urlString = url.absoluteString
                 print("Download URL: \(urlString)")
+                db.collection("photos").document(uuid).setData([
+                    "date" : FieldValue.serverTimestamp(),
+                    "location" : GeoPoint(latitude: self.locationManager.location!.coordinate.latitude, longitude: self.locationManager.location!.coordinate.longitude),
+                    "photo_url" : urlString,
+                    "score" : 11,
+                    "user" : "user id"
+                ])
             })
         })
         //stop spinning and give back control upon successful upload, or failure

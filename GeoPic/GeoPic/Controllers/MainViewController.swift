@@ -186,6 +186,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // Pass pin to segue
         let pin = view.annotation as! Pin
+        self.mapView.deselectAnnotation(pin, animated: false)
         performSegue(withIdentifier: K.Segues.mainToPicture, sender: pin)
     }
     

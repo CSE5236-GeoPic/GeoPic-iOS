@@ -15,9 +15,12 @@ class PictureViewController: UIViewController {
     @IBOutlet private var nameLabel: UILabel!
     @IBOutlet private var dateLabel: UILabel!
     @IBOutlet private var likeButton: UIButton!
+    @IBOutlet private var deleteButton: UIBarButtonItem!
     
     var pin: Pin?
     var userLikedPin = false
+    
+    var previousVC: MainViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +36,16 @@ class PictureViewController: UIViewController {
                 print("Error retrieving name")
             }
         }
+        // hide the trash button on default
+        deleteButton.isEnabled = false
+        deleteButton.tintColor = .clear
         
         // If current user is creator of pin, show delete button
         if(Auth.auth().currentUser!.uid == (pin?.userID)!){
-            deleteButton.isHidden = false
+            deleteButton.isEnabled = true
+            deleteButton.tintColor = .none
         }
         
-        imageView.image = pin?.image
-        scoreLabel.text = String((pin?.score)!)
         // Get pin image
         imageView.kf.setImage(with: pin?.url)
         
@@ -74,7 +79,7 @@ class PictureViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func deletePin(sender: UIButton){
+    @IBAction func deletePin(sender: UIBarButtonItem){
         let db = Firestore.firestore()
         // Delete pin from DB
         db.collection("photos").document((pin?.id)!).delete() { err in

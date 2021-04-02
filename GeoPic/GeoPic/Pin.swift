@@ -12,7 +12,7 @@ class Pin: NSObject, MKAnnotation {
     let id: String?
     let url: URL?
     let coordinate: CLLocationCoordinate2D
-    let score: UInt?
+    var score: UInt?
     let userID: String?
     let date: Date?
 
@@ -31,5 +31,13 @@ class Pin: NSObject, MKAnnotation {
         self.id = id
         self.date = date
         super.init()
+    }
+    
+    func incrementScore(){
+        self.score! += 1
+    }
+    
+    func decrementScore(){
+        self.score! -= 1
     }
 }

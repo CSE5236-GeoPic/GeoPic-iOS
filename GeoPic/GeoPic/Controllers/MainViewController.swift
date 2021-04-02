@@ -209,6 +209,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             guard let pin = sender as? Pin else { return }
             if let destinationVC = segue.destination as? PictureViewController {
                 destinationVC.pin = pin
+                destinationVC.previousVC = self
             }
         }
     }
@@ -221,4 +222,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             let viewRegion = MKCoordinateRegion(center: (userLocation?.coordinate)!, latitudinalMeters: 600, longitudinalMeters: 600)
             self.mapView.setRegion(viewRegion, animated: true)
         }
+    
+    // Delete pin, called from PictureViewController
+    func deletePin(pin: Pin){
+        self.mapView.removeAnnotation(pin)
+    }
 }

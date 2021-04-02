@@ -15,9 +15,12 @@ class PictureViewController: UIViewController {
     @IBOutlet private var nameLabel: UILabel!
     @IBOutlet private var dateLabel: UILabel!
     @IBOutlet private var likeButton: UIButton!
+    @IBOutlet private var deleteButton: UIBarButtonItem!
     
     var pin: Pin?
     var userLikedPin = false
+    
+    var previousVC: MainViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,15 @@ class PictureViewController: UIViewController {
             } else {
                 print("Error retrieving name")
             }
+        }
+        // hide the trash button on default
+        deleteButton.isEnabled = false
+        deleteButton.tintColor = .clear
+        
+        // If current user is creator of pin, show delete button
+        if(Auth.auth().currentUser!.uid == (pin?.userID)!){
+            deleteButton.isEnabled = true
+            deleteButton.tintColor = .none
         }
         
         // Get pin image
@@ -62,8 +74,25 @@ class PictureViewController: UIViewController {
         }
 
     }
-    @IBAction func back(sender: UIBarButtonItem){
+  
+    @IBAction func back(sender: UIButton){
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func deletePin(sender: UIBarButtonItem){
+        let db = Firestore.firestore()
+        // Delete pin from DB
+        db.collection("photos").document((pin?.id)!).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                // Remove pin from map
+                self.dismiss(animated: true, completion: {
+                    self.previousVC!.deletePin(pin: self.pin!)
+                })
+                print("Document successfully removed!")
+            }
+        }
     }
     
     @IBAction func like(sender: UIButton){
@@ -125,5 +154,4 @@ class PictureViewController: UIViewController {
         let score = String((pin?.score)!)
         likeButton.setTitle("(\(score))", for: .normal)
     }
-
 }

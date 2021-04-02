@@ -80,6 +80,11 @@
                                                 <action selector="backWithSender:" destination="Bor-mj-4rf" id="Iy3-7Q-B8n"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" image="trash" catalog="system" id="qol-bf-ZSW">
+                                            <connections>
+                                                <action selector="deletePinWithSender:" destination="Bor-mj-4rf" id="RRY-td-TI0"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -133,6 +138,7 @@
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="OAN-Fl-l6V" id="DGY-vm-83n"/>
+                        <outlet property="deleteButton" destination="qol-bf-ZSW" id="m5Y-mj-KuJ"/>
                         <outlet property="imageView" destination="haw-Ea-6Rm" id="Tf2-EY-XBQ"/>
                         <outlet property="likeButton" destination="Fhy-1L-AZy" id="VQ4-GI-uvH"/>
                         <outlet property="nameLabel" destination="7dB-sb-oyS" id="Cm9-2d-Gce"/>
@@ -157,6 +163,7 @@
         <image name="camera.fill" catalog="system" width="128" height="94"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

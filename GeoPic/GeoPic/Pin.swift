@@ -10,15 +10,15 @@ import MapKit
 
 class Pin: NSObject, MKAnnotation {
     let id: String?
-    let image: UIImage?
+    let url: URL?
     let coordinate: CLLocationCoordinate2D
-    let score: UInt?
+    var score: UInt?
     let userID: String?
     let date: Date?
 
     init(
         id: String?,
-        image: UIImage?,
+        url: URL?,
         coordinate: CLLocationCoordinate2D,
         score: UInt?,
         userID: String?,
@@ -27,9 +27,17 @@ class Pin: NSObject, MKAnnotation {
         self.score = score
         self.userID = userID
         self.coordinate = coordinate
-        self.image = image
+        self.url = url
         self.id = id
         self.date = date
         super.init()
+    }
+    
+    func incrementScore(){
+        self.score! += 1
+    }
+    
+    func decrementScore(){
+        self.score! -= 1
     }
 }

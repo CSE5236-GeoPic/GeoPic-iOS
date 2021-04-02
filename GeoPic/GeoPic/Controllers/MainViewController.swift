@@ -139,8 +139,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
                     "date" : FieldValue.serverTimestamp(),
                     "location" : GeoPoint(latitude: self.locationManager.location!.coordinate.latitude, longitude: self.locationManager.location!.coordinate.longitude),
                     "photo_url" : urlString,
-                    "score" : 11,
-                    "user" : "user id"
+                    "score" : 0,
+                    "user" : Auth.auth().currentUser?.uid as Any
                 ])
             })
         })

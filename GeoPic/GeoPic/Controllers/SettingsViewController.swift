@@ -97,6 +97,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         var passwordfield: UITextField = UITextField()
         passwordPrompt.addTextField { (tf) in
             tf.placeholder = "Password"
+            tf.isSecureTextEntry = true
+            tf.textContentType = .password
+            tf.clearButtonMode = .whileEditing
             passwordfield = tf
         }
         let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action) in

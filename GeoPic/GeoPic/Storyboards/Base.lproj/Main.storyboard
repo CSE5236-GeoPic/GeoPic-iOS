@@ -47,12 +47,24 @@
                                     <action selector="settingsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N6Q-kT-CH3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWv-0z-MVQ" userLabel="Location Button">
+                                <rect key="frame" x="27" y="735" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="0.43538579249999998" green="0.43538579249999998" blue="0.43538579249999998" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="location.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="locationPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P54-Ai-7oo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
                         <outlet property="cameraButton" destination="JJ7-EY-VMc" id="4KP-Xp-0bR"/>
+                        <outlet property="locationButton" destination="FWv-0z-MVQ" id="Yzy-eF-HYk"/>
                         <outlet property="mapView" destination="bRq-Jf-ret" id="49g-Gj-kzk"/>
                         <outlet property="settingsButton" destination="ifj-2X-E5r" id="W0d-FU-Pc2"/>
                         <segue destination="Bor-mj-4rf" kind="presentation" identifier="mainToPicture" modalPresentationStyle="automatic" id="oHg-H8-Qzm"/>
@@ -163,6 +175,7 @@
         <image name="camera.fill" catalog="system" width="128" height="94"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="location.fill" catalog="system" width="128" height="121"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

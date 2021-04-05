@@ -16,6 +16,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     @IBOutlet private var mapView: MKMapView!
     @IBOutlet private var cameraButton: UIButton!
     @IBOutlet private var settingsButton: UIButton!
+    @IBOutlet private var locationButton: UIButton!
     
     private let storage = Storage.storage().reference()
     var locationManager = CLLocationManager()
@@ -50,9 +51,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         settingsButton.layer.masksToBounds = true
         settingsButton.layer.cornerRadius = settingsButton.frame.width/2
         activityIndicator.hidesWhenStopped = true
+        
+        // Set up location button
+        locationButton.imageView?.contentMode = .scaleAspectFit
+        locationButton.layer.masksToBounds = true
+        locationButton.layer.cornerRadius = locationButton.frame.width/2
+        
         loadPins()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -220,6 +225,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     // Delete pin, called from PictureViewController
     func deletePin(pin: Pin){
         self.mapView.removeAnnotation(pin)
+    }
+    
+    @IBAction func locationPressed(_ sender: UIButton) {
+        centerMapOnUserLocation()
     }
     
     // Moves map and zooms to location

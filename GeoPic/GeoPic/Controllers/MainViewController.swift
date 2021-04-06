@@ -193,8 +193,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let pin = view.annotation as? Pin else { return }
+        let userLocation = self.locationManager.location!
+        let pinLocation = CLLocation(latitude: pin.coordinate.latitude, longitude: pin.coordinate.longitude)
+        let distance = userLocation.distance(from: pinLocation)
+        print(distance)
         // Pass pin to segue
-        let pin = view.annotation as! Pin
         self.mapView.deselectAnnotation(pin, animated: false)
         performSegue(withIdentifier: K.Segues.mainToPicture, sender: pin)
     }
@@ -226,5 +230,25 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     // Delete pin, called from PictureViewController
     func deletePin(pin: Pin){
         self.mapView.removeAnnotation(pin)
+    }
+    
+    // Refenced https://stackoverflow.com/a/38383598
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !annotation.isKind(of: MKUserLocation.self) else {
+            return nil
+        }
+
+        let annotationIdentifier = "pin"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+        } else {
+            annotationView!.annotation = annotation
+        }
+        
+        let image = UIImage(systemName: "pin.fill")
+        annotationView!.image = image
+
+        return annotationView
     }
 }

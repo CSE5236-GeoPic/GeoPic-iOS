@@ -153,12 +153,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         //stop spinning and give back control upon successful upload, or failure
         uploadPhoto.observe(.success) {snapshot in
             self.centerMapOnUserLocation()
+            self.loadPins()
             self.effectView.removeFromSuperview()
             print("Stop Spinning")
             self.view.isUserInteractionEnabled = true
         }
         uploadPhoto.observe(.failure) {snapshot in
             self.centerMapOnUserLocation()
+            self.loadPins()
             self.effectView.removeFromSuperview()
             print("Stop Spinning")
             print("Error Uploading")
@@ -171,6 +173,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     }
     
     private func loadPins(){
+        // Remove any pins currently on map
+        let annotations = mapView.annotations.filter({ !($0 is MKUserLocation) })
+        mapView.removeAnnotations(annotations)
+        
+        // Load pins
         let db = Firestore.firestore()
         db.collection("photos").getDocuments() { (querySnapshot, err) in
             if let err = err {

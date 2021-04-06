@@ -16,6 +16,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     @IBOutlet private var mapView: MKMapView!
     @IBOutlet private var cameraButton: UIButton!
     @IBOutlet private var settingsButton: UIButton!
+    @IBOutlet private var locationButton: UIButton!
     
     private let storage = Storage.storage().reference()
     var locationManager = CLLocationManager()
@@ -31,6 +32,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         // Remove "legal" button
         mapView.subviews[2].isHidden = true
         // Request location access
+        locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -49,9 +51,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         settingsButton.layer.masksToBounds = true
         settingsButton.layer.cornerRadius = settingsButton.frame.width/2
         activityIndicator.hidesWhenStopped = true
+        
+        // Set up location button
+        locationButton.imageView?.contentMode = .scaleAspectFit
+        locationButton.layer.masksToBounds = true
+        locationButton.layer.cornerRadius = locationButton.frame.width/2
+        
         loadPins()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -146,12 +152,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         })
         //stop spinning and give back control upon successful upload, or failure
         uploadPhoto.observe(.success) {snapshot in
+            self.centerMapOnUserLocation()
             self.loadPins()
             self.effectView.removeFromSuperview()
             print("Stop Spinning")
             self.view.isUserInteractionEnabled = true
         }
         uploadPhoto.observe(.failure) {snapshot in
+            self.centerMapOnUserLocation()
             self.loadPins()
             self.effectView.removeFromSuperview()
             print("Stop Spinning")
@@ -221,17 +229,23 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         }
     }
     
-    // Taken from: https://stackoverflow.com/questions/52564004/location-marker-not-displaying-swift-4
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-            print("location = \(locValue.latitude) \(locValue.longitude)")
-            let userLocation = locations.last
-            let viewRegion = MKCoordinateRegion(center: (userLocation?.coordinate)!, latitudinalMeters: 600, longitudinalMeters: 600)
-            self.mapView.setRegion(viewRegion, animated: true)
-        }
-    
     // Delete pin, called from PictureViewController
     func deletePin(pin: Pin){
         self.mapView.removeAnnotation(pin)
+    }
+    
+    @IBAction func locationPressed(_ sender: UIButton) {
+        centerMapOnUserLocation()
+    }
+    
+    // Moves map and zooms to location
+    func centerMapOnUserLocation(){
+        guard let coordinate = locationManager.location?.coordinate else { return }
+        let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 600, longitudinalMeters: 600)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        centerMapOnUserLocation()
     }
 }

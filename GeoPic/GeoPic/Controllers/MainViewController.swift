@@ -246,8 +246,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             annotationView!.annotation = annotation
         }
         
-        let image = UIImage(systemName: "pin.fill")
+        let image = UIImage(named: "pin")
         annotationView!.image = image
+        annotationView!.frame.size = CGSize(width: 50, height: 50)
 
         return annotationView
     }

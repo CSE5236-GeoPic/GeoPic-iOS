@@ -201,6 +201,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
                     let pin = Pin(id: pinID, url: url, coordinate: coord, score: score, userID: userID, date: date)
                     
                     self.mapView.addAnnotation(pin)
+                    
+                    let circle = MKCircle(center: coord, radius: K.pinCircleRadius)
+                    self.mapView.addOverlay(circle)
                 }
             }
         }
@@ -213,9 +216,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         let pinLocation = CLLocation(latitude: pin.coordinate.latitude, longitude: pin.coordinate.longitude)
         let distance = userLocation.distance(from: pinLocation)
         print(distance)
-        // Pass pin to segue
+        // Return if user is not in the radius of the pin
+        if(distance <= K.pinCircleRadius){
+            // Pass pin to segue
+            performSegue(withIdentifier: K.Segues.mainToPicture, sender: pin)
+        }
         self.mapView.deselectAnnotation(pin, animated: false)
-        performSegue(withIdentifier: K.Segues.mainToPicture, sender: pin)
     }
     
     @IBAction func settingsPressed(_ sender: UIButton) {
@@ -254,9 +260,17 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         
         let image = UIImage(named: "pin")
         annotationView!.image = image
-        annotationView!.frame.size = CGSize(width: 50, height: 50)
+        annotationView!.frame.size = CGSize(width: K.pinSize, height: K.pinSize)
 
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let circleRenderer = MKCircleRenderer(overlay: overlay)
+        circleRenderer.fillColor = UIColor.blue.withAlphaComponent(0.1)
+        circleRenderer.strokeColor = .blue
+        circleRenderer.lineWidth = 1
+        return circleRenderer
     }
     
     @IBAction func locationPressed(_ sender: UIButton) {
@@ -266,7 +280,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     // Moves map and zooms to location
     func centerMapOnUserLocation(){
         guard let coordinate = locationManager.location?.coordinate else { return }
-        let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 600, longitudinalMeters: 600)
+        let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: K.mapSize, longitudinalMeters: K.mapSize)
         mapView.setRegion(coordinateRegion, animated: true)
     }
     

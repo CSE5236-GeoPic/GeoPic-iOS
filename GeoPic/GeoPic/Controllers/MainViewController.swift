@@ -195,7 +195,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
                     
                     let pinID = document.documentID
                     
-                    let timestamp = document.data()["date"] as! Timestamp
+                    let timestamp = document.get("date", serverTimestampBehavior: .estimate) as! Timestamp
                     let date = timestamp.dateValue()
 
                     let pin = Pin(id: pinID, url: url, coordinate: coord, score: score, userID: userID, date: date)

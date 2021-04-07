@@ -10,6 +10,7 @@ import MapKit
 import CoreLocation
 import Firebase
 import FirebaseStorage
+import SwiftMessages
 
 class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -220,6 +221,20 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         if(distance <= K.pinCircleRadius){
             // Pass pin to segue
             performSegue(withIdentifier: K.Segues.mainToPicture, sender: pin)
+        } else {
+            // Haptic feedback when pin is not in range
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.error)
+            
+            // Show error message
+            let errorView = MessageView.viewFromNib(layout: .cardView)
+            errorView.button?.isHidden = true
+            errorView.configureTheme(.error)
+            errorView.configureDropShadow()
+            errorView.configureContent(title: "Alert", body: "You must be within \(Int(K.pinCircleRadius)) meters of the pin to view it!")
+            errorView.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+            (errorView.backgroundView as? CornerRoundingView)?.cornerRadius = 10
+            SwiftMessages.show(view: errorView)
         }
         self.mapView.deselectAnnotation(pin, animated: false)
     }

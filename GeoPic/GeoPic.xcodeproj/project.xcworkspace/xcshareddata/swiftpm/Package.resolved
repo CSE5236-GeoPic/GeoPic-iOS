@@ -126,6 +126,15 @@
           "revision": "afa9a1ace74e116848d4f743599ab83e584ff8cb",
           "version": "1.2.12"
         }
+      },
+      {
+        "package": "SwiftMessages",
+        "repositoryURL": "https://github.com/SwiftKickMobile/SwiftMessages",
+        "state": {
+          "branch": null,
+          "revision": "ba6c3e7284a531965feff058ba36784f30017843",
+          "version": "9.0.2"
+        }
       }
     ]
   },

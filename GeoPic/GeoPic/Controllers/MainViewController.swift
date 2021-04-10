@@ -10,6 +10,7 @@ import MapKit
 import CoreLocation
 import Firebase
 import FirebaseStorage
+import SwiftMessages
 
 class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -195,12 +196,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
                     
                     let pinID = document.documentID
                     
-                    let timestamp = document.data()["date"] as! Timestamp
+                    let timestamp = document.get("date", serverTimestampBehavior: .estimate) as! Timestamp
                     let date = timestamp.dateValue()
 
                     let pin = Pin(id: pinID, url: url, coordinate: coord, score: score, userID: userID, date: date)
                     
                     self.mapView.addAnnotation(pin)
+                    
+                    let circle = MKCircle(center: coord, radius: K.pinCircleRadius)
+                    self.mapView.addOverlay(circle)
                 }
             }
         }
@@ -208,10 +212,31 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        // Pass pin to segue
-        let pin = view.annotation as! Pin
+        guard let pin = view.annotation as? Pin else { return }
+        let userLocation = self.locationManager.location!
+        let pinLocation = CLLocation(latitude: pin.coordinate.latitude, longitude: pin.coordinate.longitude)
+        let distance = userLocation.distance(from: pinLocation)
+        print(distance)
+        // Return if user is not in the radius of the pin
+        if(distance <= K.pinCircleRadius){
+            // Pass pin to segue
+            performSegue(withIdentifier: K.Segues.mainToPicture, sender: pin)
+        } else {
+            // Haptic feedback when pin is not in range
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.error)
+            
+            // Show error message
+            let errorView = MessageView.viewFromNib(layout: .cardView)
+            errorView.button?.isHidden = true
+            errorView.configureTheme(.error)
+            errorView.configureDropShadow()
+            errorView.configureContent(title: "Alert", body: "You must be within \(Int(K.pinCircleRadius)) meters of the pin to view it!")
+            errorView.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+            (errorView.backgroundView as? CornerRoundingView)?.cornerRadius = 10
+            SwiftMessages.show(view: errorView)
+        }
         self.mapView.deselectAnnotation(pin, animated: false)
-        performSegue(withIdentifier: K.Segues.mainToPicture, sender: pin)
     }
     
     @IBAction func settingsPressed(_ sender: UIButton) {
@@ -234,6 +259,35 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         self.mapView.removeAnnotation(pin)
     }
     
+    // Refenced https://stackoverflow.com/a/38383598
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !annotation.isKind(of: MKUserLocation.self) else {
+            return nil
+        }
+
+        let annotationIdentifier = "pin"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+        } else {
+            annotationView!.annotation = annotation
+        }
+        
+        let image = UIImage(named: "pin")
+        annotationView!.image = image
+        annotationView!.frame.size = CGSize(width: K.pinSize, height: K.pinSize)
+
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let circleRenderer = MKCircleRenderer(overlay: overlay)
+        circleRenderer.fillColor = UIColor.blue.withAlphaComponent(0.1)
+        circleRenderer.strokeColor = .blue
+        circleRenderer.lineWidth = 1
+        return circleRenderer
+    }
+    
     @IBAction func locationPressed(_ sender: UIButton) {
         centerMapOnUserLocation()
     }
@@ -241,7 +295,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     // Moves map and zooms to location
     func centerMapOnUserLocation(){
         guard let coordinate = locationManager.location?.coordinate else { return }
-        let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 600, longitudinalMeters: 600)
+        let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: K.mapSize, longitudinalMeters: K.mapSize)
         mapView.setRegion(coordinateRegion, animated: true)
     }
     

@@ -15,4 +15,7 @@ struct K {
         static let mainToPicture = "mainToPicture"
         static let settingsToChange = "settingsToChange"
     }
+    static let pinSize = 30.0;
+    static let mapSize = 600.0;
+    static let pinCircleRadius = 100.0;
 }

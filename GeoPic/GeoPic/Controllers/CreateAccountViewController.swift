@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import KeychainSwift
 
 class CreateAccountViewController: UIViewController {
 
@@ -79,6 +80,12 @@ class CreateAccountViewController: UIViewController {
                         alert.addAction(action)
                         self.present(alert, animated: true, completion: nil)
                     } else {
+                        // account created
+                        // update keychain information for biometrics
+                        let keychain = KeychainSwift()
+                        keychain.set(self.emailTextfield.text!, forKey: "email")
+                        keychain.set(self.passwordTextfield.text!, forKey: "password")
+                        // display success message
                         let alert = UIAlertController(title: "Account Created!", message: "Your account was successfully created!", preferredStyle: .alert)
                         let action = UIAlertAction(title: "OK", style: .default) { handler in
                             self.dismiss(animated: true) {

@@ -21,6 +21,8 @@ class PictureViewController: UIViewController {
     var userLikedPin = false
     
     var previousVC: MainViewController!
+    
+    var delegate: PictureViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,14 @@ class PictureViewController: UIViewController {
             if let document = document, document.exists {
                 self.nameLabel.text = document.data()!["name"] as? String
             } else {
-                print("Error retrieving name")
+                let alert = UIAlertController(title: "Oops...", message: "This picture does not exist anymore", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default) { (action) in
+                    self.dismiss(animated: true, completion: nil)
+                }
+                alert.addAction(action)
+                self.present(alert, animated: true) {
+                    self.delegate?.pictureViewDelegate(for: self.pin!, true)
+                }
             }
         }
         // hide the trash button on default

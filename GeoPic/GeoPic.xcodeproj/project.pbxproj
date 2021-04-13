@@ -43,7 +43,7 @@
 		D28791B025F006AE00994863 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D28791AF25F006AE00994863 /* SettingsTableViewCell.xib */; };
 		D28791C225F0074300994863 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28791C025F0074300994863 /* SettingsViewController.swift */; };
 		D28791C325F0074300994863 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28791C125F0074300994863 /* SettingsTableViewCell.swift */; };
-		D2B2E55925FD83DF00119C03 /* AuthenticationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2E55825FD83DF00119C03 /* AuthenticationDelegate.swift */; };
+		D2B2E55925FD83DF00119C03 /* GeoPicDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2E55825FD83DF00119C03 /* GeoPicDelegates.swift */; };
 		D2BAB0B325E411D100449978 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BAB0B225E411D100449978 /* CreateAccountViewController.swift */; };
 		D2BAB0B925E4148400449978 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D2BAB0B825E4148400449978 /* IQKeyboardManagerSwift */; };
 		D2BAB0C425E4188A00449978 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BAB0C325E4188A00449978 /* Constants.swift */; };
@@ -94,7 +94,7 @@
 		D28791AF25F006AE00994863 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		D28791C025F0074300994863 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D28791C125F0074300994863 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
-		D2B2E55825FD83DF00119C03 /* AuthenticationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDelegate.swift; sourceTree = "<group>"; };
+		D2B2E55825FD83DF00119C03 /* GeoPicDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPicDelegates.swift; sourceTree = "<group>"; };
 		D2BAB0B225E411D100449978 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		D2BAB0C325E4188A00449978 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,7 +202,7 @@
 			children = (
 				D27CBD1225DDC7C800BE02E9 /* AppDelegate.swift */,
 				D27CBD1425DDC7C800BE02E9 /* SceneDelegate.swift */,
-				D2B2E55825FD83DF00119C03 /* AuthenticationDelegate.swift */,
+				D2B2E55825FD83DF00119C03 /* GeoPicDelegates.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -390,7 +390,7 @@
 				D2BAB0B325E411D100449978 /* CreateAccountViewController.swift in Sources */,
 				D27CBD1725DDC7C800BE02E9 /* LoginViewController.swift in Sources */,
 				D272DD1725FF460D007FED1D /* SettingsChangeViewController.swift in Sources */,
-				D2B2E55925FD83DF00119C03 /* AuthenticationDelegate.swift in Sources */,
+				D2B2E55925FD83DF00119C03 /* GeoPicDelegates.swift in Sources */,
 				D27CBD1325DDC7C800BE02E9 /* AppDelegate.swift in Sources */,
 				55719FCF25E8334700390E25 /* PictureViewController.swift in Sources */,
 				55719FC525E810F500390E25 /* Pin.swift in Sources */,
@@ -599,7 +599,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2021040501;
-				DEVELOPMENT_TEAM = E6X7XRG34G;
+				DEVELOPMENT_TEAM = 2JDGUK4DRH;
 				INFOPLIST_FILE = GeoPic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -619,7 +619,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2021040501;
-				DEVELOPMENT_TEAM = E6X7XRG34G;
+				DEVELOPMENT_TEAM = 2JDGUK4DRH;
 				INFOPLIST_FILE = GeoPic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

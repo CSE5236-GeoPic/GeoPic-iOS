@@ -22,6 +22,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     private let storage = Storage.storage().reference()
     var locationManager = CLLocationManager()
     
+    let db = Firestore.firestore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -126,7 +128,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         }
         //creates uuid for each photo
         let uuid = UUID().uuidString
-        let db = Firestore.firestore()
+        
         self.view.isUserInteractionEnabled = false
         //show activity indicator and stop allowing user inputs when uploading photo
         activityIndicator("Uploading")
@@ -142,26 +144,27 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
                 }
                 let urlString = url.absoluteString
                 print("Download URL: \(urlString)")
-                db.collection("photos").document(uuid).setData([
+                self.db.collection("photos").document(uuid).setData([
                     "date" : FieldValue.serverTimestamp(),
                     "location" : GeoPoint(latitude: self.locationManager.location!.coordinate.latitude, longitude: self.locationManager.location!.coordinate.longitude),
                     "photo_url" : urlString,
                     "score" : 0,
                     "user" : Auth.auth().currentUser?.uid as Any
                 ])
+                
+                // done uploading so reload the map
+                self.loadPins()
             })
         })
         //stop spinning and give back control upon successful upload, or failure
         uploadPhoto.observe(.success) {snapshot in
             self.centerMapOnUserLocation()
-            self.loadPins()
             self.effectView.removeFromSuperview()
             print("Stop Spinning")
             self.view.isUserInteractionEnabled = true
         }
         uploadPhoto.observe(.failure) {snapshot in
             self.centerMapOnUserLocation()
-            self.loadPins()
             self.effectView.removeFromSuperview()
             print("Stop Spinning")
             print("Error Uploading")
@@ -250,6 +253,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             if let destinationVC = segue.destination as? PictureViewController {
                 destinationVC.pin = pin
                 destinationVC.previousVC = self
+                destinationVC.delegate = self
             }
         }
     }
@@ -301,5 +305,25 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         centerMapOnUserLocation()
+    }
+}
+
+extension MainViewController: PictureViewDelegate {
+    
+    func pictureViewDelegate(for pin: Pin, _ isInvalidPin: Bool) {
+        // delete the passed in pin from the map and delete the picture document from the db
+        
+        // delete picture from db
+        db.collection("photos").document(pin.id!).delete { (error) in
+            if error != nil {
+                let alert = UIAlertController(title: "There was a problem deleting the picture", message: "Please try again later", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                // delete the pin from the map
+                self.deletePin(pin: pin)
+            }
+        }
     }
 }

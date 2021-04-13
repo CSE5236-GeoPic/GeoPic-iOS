@@ -61,6 +61,7 @@
                                                     <constraint firstAttribute="width" secondItem="HpJ-Ju-ooo" secondAttribute="height" multiplier="1:1" id="6VD-GP-aDS"/>
                                                     <constraint firstAttribute="height" constant="34" id="8Ce-lw-K7W"/>
                                                 </constraints>
+                                                <color key="tintColor" systemColor="systemBlueColor"/>
                                                 <state key="normal" backgroundImage="faceid" catalog="system"/>
                                                 <connections>
                                                     <action selector="biometricPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LZi-Ub-fFa"/>
@@ -72,6 +73,7 @@
                                         <rect key="frame" x="0.0" y="194" width="330" height="35"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <color key="tintColor" systemColor="systemBlueColor"/>
                                         <state key="normal" title="Log In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -83,6 +85,7 @@
                                         <rect key="frame" x="0.0" y="291.99999999999994" width="330" height="35"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <color key="tintColor" systemColor="systemBlueColor"/>
                                         <state key="normal" title="Create Account">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>

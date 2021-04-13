@@ -27,6 +27,8 @@ class PictureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        likeButton.imageView?.contentMode = .scaleAspectFit
+        
         let db = Firestore.firestore()
         
         // Get pin author name

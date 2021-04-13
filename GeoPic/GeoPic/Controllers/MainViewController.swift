@@ -36,13 +36,33 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         mapView.subviews[2].isHidden = true
         // Request location access
         locationManager.delegate = self
-        self.locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        
+        switch locationManager.authorizationStatus {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            fallthrough
+        case .authorizedWhenInUse:
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
+        case .denied:
+            let alert = UIAlertController(title: "GeoPic needs to use the location data", message: "Please go to Settings -> App Settings -> Enable location services and enable location services", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                self.navigationController?.popViewController(animated: true)
+            }
+            let settingsAction = UIAlertAction(title: "Settings", style: .default) { (action) in
+                let url = URL(string: UIApplication.openSettingsURLString)!
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url) { completion in
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
+            alert.addAction(cancelAction)
+            alert.addAction(settingsAction)
+            self.present(alert, animated: true, completion: nil)
+        default:
+            print("should not be here")
         }
-        // TODO: Handle case where user does not accept location services
         
         // Set up camera button
         cameraButton.imageView?.contentMode = .scaleAspectFit

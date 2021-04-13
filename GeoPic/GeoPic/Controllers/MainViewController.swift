@@ -140,10 +140,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+        guard let uncompressedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
-        guard let imageData = image.pngData() else {
+        guard let image = uncompressedImage.resizeWithPercent(percentage: 0.8) else {
+            return
+        }
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
             return
         }
         //creates uuid for each photo
@@ -153,12 +156,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         //show activity indicator and stop allowing user inputs when uploading photo
         activityIndicator("Uploading")
         print("Start Spinning")
-        let uploadPhoto = storage.child("images/\(uuid).png").putData(imageData, metadata: nil, completion: {_, error in
+        let uploadPhoto = storage.child("images/\(uuid).jpg").putData(imageData, metadata: nil, completion: {_, error in
             guard error == nil else {
                 print("Failed to Upload")
                 return
             }
-            self.storage.child("images/\(uuid).png").downloadURL(completion: { url, error in
+            self.storage.child("images/\(uuid).jpg").downloadURL(completion: { url, error in
                 guard let url = url, error == nil else {
                     return
                 }
@@ -345,5 +348,31 @@ extension MainViewController: PictureViewDelegate {
                 self.deletePin(pin: pin)
             }
         }
+    }
+}
+
+// Taken from https://stackoverflow.com/a/43256233
+extension UIImage {
+    func resizeWithPercent(percentage: CGFloat) -> UIImage? {
+        let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: size.width * percentage, height: size.height * percentage)))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = self
+        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        imageView.layer.render(in: context)
+        guard let result = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
+        UIGraphicsEndImageContext()
+        return result
+    }
+    func resizeWithWidth(width: CGFloat) -> UIImage? {
+        let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = self
+        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        imageView.layer.render(in: context)
+        guard let result = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
+        UIGraphicsEndImageContext()
+        return result
     }
 }

@@ -38,16 +38,19 @@ class LoginViewController: UIViewController {
         passwordTextfield.tag = 1
         emailTextfield.delegate = self
         passwordTextfield.delegate = self
-        
-        // determine if keychain has username and password
-        biometricBtn.isHidden = true
-        if let _ = keychain.get("email"), let _ = keychain.get("password") {
-            // if username and password exists in the keychain, biometric is available
-            biometricBtn.isHidden = false
-        }
+
         // populate email field with saved email from user defaults if there's one
         if let email = defaults.string(forKey: "email") {
             emailTextfield.text = email
+        }
+        
+        // determine if device has FaceID or TouchID and set appropriate image for the biometrics button
+        var biometricsError: NSError?
+        if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &biometricsError) {
+            if localAuthenticationContext.biometryType == .touchID {
+                print("here")
+                biometricBtn.setBackgroundImage(UIImage(systemName: "touchid"), for: .normal)
+            }
         }
     }
     
@@ -56,6 +59,21 @@ class LoginViewController: UIViewController {
         
         // hides navigation bar when this view is loaded
         self.navigationController?.isNavigationBarHidden = true
+        
+        // if email in UserDefaults is empty string, clear the email text field
+        if let email = (defaults.value(forKey: "email") as? String), email.isEmpty {
+            // if here, account was deleted
+            emailTextfield.text = ""
+        }
+        // clear password field
+        passwordTextfield.text = ""
+        
+        // determine if keychain has username and password and if true, enable biometrics
+        biometricBtn.isHidden = true
+        if let _ = keychain.get("email"), let _ = keychain.get("password") {
+            // if username and password exists in the keychain, biometric is available
+            biometricBtn.isHidden = false
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -143,7 +161,7 @@ class LoginViewController: UIViewController {
                 strongSelf.defaults.setValue(email, forKey: "email")
                 if method == .emailPassword {
                     // if user logged in using email and password, ask them if they want biometrics for next time
-                    let alert = UIAlertController(title: "Login Successful", message: "Would you like to use biometrics from now on?", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Login Successful", message: "Would you like to use biometrics for sign in?", preferredStyle: .alert)
                     let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
                         // to enroll in biometrics, save the email and password to the keychain
                         strongSelf.keychain.set(email, forKey: "email")

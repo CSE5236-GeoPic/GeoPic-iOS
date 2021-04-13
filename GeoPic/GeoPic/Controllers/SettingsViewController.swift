@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import KeychainSwift
 
 class SettingsViewController: UIViewController {
 
@@ -123,6 +124,14 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                                 if error != nil {
                                     self.displayAccountDeleteAlert(title: "Failed to delete account", message: "Please try again later")
                                 } else {
+                                    // account successfully deleted
+                                    
+                                    // clear keychain credential
+                                    let keychain = KeychainSwift()
+                                    keychain.clear()
+                                    // clear UserDefaults email
+                                    UserDefaults.standard.setValue("", forKey: "email")
+                                    // display success message
                                     let confirmationAlert = UIAlertController(title: "Account deleted!", message: "", preferredStyle: .alert)
                                     let action = UIAlertAction(title: "OK", style: .default) { (action) in
                                         self.navigationController?.popToRootViewController(animated: true)

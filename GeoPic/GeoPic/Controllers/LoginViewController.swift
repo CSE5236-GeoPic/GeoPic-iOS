@@ -38,13 +38,7 @@ class LoginViewController: UIViewController {
         passwordTextfield.tag = 1
         emailTextfield.delegate = self
         passwordTextfield.delegate = self
-        
-        // determine if keychain has username and password
-        biometricBtn.isHidden = true
-        if let _ = keychain.get("email"), let _ = keychain.get("password") {
-            // if username and password exists in the keychain, biometric is available
-            biometricBtn.isHidden = false
-        }
+
         // populate email field with saved email from user defaults if there's one
         if let email = defaults.string(forKey: "email") {
             emailTextfield.text = email
@@ -54,8 +48,21 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        print("viewwillappear")
         // hides navigation bar when this view is loaded
         self.navigationController?.isNavigationBarHidden = true
+        
+        // if email in UserDefaults is empty string, clear the email text field
+        if let email = (defaults.value(forKey: "email") as? String), email.isEmpty {
+            // if here, account was deleted
+            emailTextfield.text = ""
+        }
+        // determine if keychain has username and password and if true, enable biometrics
+        biometricBtn.isHidden = true
+        if let _ = keychain.get("email"), let _ = keychain.get("password") {
+            // if username and password exists in the keychain, biometric is available
+            biometricBtn.isHidden = false
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

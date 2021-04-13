@@ -88,6 +88,7 @@ class CreateAccountViewController: UIViewController {
                         // display success message
                         let alert = UIAlertController(title: "Account Created!", message: "Your account was successfully created!", preferredStyle: .alert)
                         let action = UIAlertAction(title: "OK", style: .default) { handler in
+                            
                             self.dismiss(animated: true) {
                                 self.delegate?.authenticationDelegate(true, email: self.emailTextfield.text!, name: self.nameTextfield.text!)
                             }

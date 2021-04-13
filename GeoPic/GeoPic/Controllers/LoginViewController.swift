@@ -48,7 +48,6 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print("viewwillappear")
         // hides navigation bar when this view is loaded
         self.navigationController?.isNavigationBarHidden = true
         
@@ -57,6 +56,9 @@ class LoginViewController: UIViewController {
             // if here, account was deleted
             emailTextfield.text = ""
         }
+        // clear password field
+        passwordTextfield.text = ""
+        
         // determine if keychain has username and password and if true, enable biometrics
         biometricBtn.isHidden = true
         if let _ = keychain.get("email"), let _ = keychain.get("password") {
@@ -150,7 +152,7 @@ class LoginViewController: UIViewController {
                 strongSelf.defaults.setValue(email, forKey: "email")
                 if method == .emailPassword {
                     // if user logged in using email and password, ask them if they want biometrics for next time
-                    let alert = UIAlertController(title: "Login Successful", message: "Would you like to use biometrics from now on?", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Login Successful", message: "Would you like to use biometrics for sign in?", preferredStyle: .alert)
                     let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
                         // to enroll in biometrics, save the email and password to the keychain
                         strongSelf.keychain.set(email, forKey: "email")

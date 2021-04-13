@@ -81,17 +81,28 @@ class CreateAccountViewController: UIViewController {
                         self.present(alert, animated: true, completion: nil)
                     } else {
                         // account created
-                        // update keychain information for biometrics
-                        let keychain = KeychainSwift()
-                        keychain.set(self.emailTextfield.text!, forKey: "email")
-                        keychain.set(self.passwordTextfield.text!, forKey: "password")
-                        // display success message
+                        
+                        // ask for biometrics
                         let alert = UIAlertController(title: "Account Created!", message: "Your account was successfully created!", preferredStyle: .alert)
                         let action = UIAlertAction(title: "OK", style: .default) { handler in
-                            
-                            self.dismiss(animated: true) {
-                                self.delegate?.authenticationDelegate(true, email: self.emailTextfield.text!, name: self.nameTextfield.text!)
+                            let askBiometrics = UIAlertController(title: "Would you like to use biometrics for sign in?", message: "", preferredStyle: .alert)
+                            let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+                                // update keychain information for biometrics
+                                let keychain = KeychainSwift()
+                                keychain.set(self.emailTextfield.text!, forKey: "email")
+                                keychain.set(self.passwordTextfield.text!, forKey: "password")
+                                self.dismiss(animated: true) {
+                                    self.delegate?.authenticationDelegate(true, email: self.emailTextfield.text!, name: self.nameTextfield.text!)
+                                }
                             }
+                            let noAction = UIAlertAction(title: "No", style: .default) { action in
+                                self.dismiss(animated: true) {
+                                    self.delegate?.authenticationDelegate(true, email: self.emailTextfield.text!, name: self.nameTextfield.text!)
+                                }
+                            }
+                            askBiometrics.addAction(yesAction)
+                            askBiometrics.addAction(noAction)
+                            self.present(askBiometrics, animated: true)
                         }
                         alert.addAction(action)
                         self.present(alert, animated: true, completion: nil)

@@ -43,6 +43,15 @@ class LoginViewController: UIViewController {
         if let email = defaults.string(forKey: "email") {
             emailTextfield.text = email
         }
+        
+        // determine if device has FaceID or TouchID and set appropriate image for the biometrics button
+        var biometricsError: NSError?
+        if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &biometricsError) {
+            if localAuthenticationContext.biometryType == .touchID {
+                print("here")
+                biometricBtn.setBackgroundImage(UIImage(systemName: "touchid"), for: .normal)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

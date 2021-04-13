@@ -151,10 +151,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
                     "score" : 0,
                     "user" : Auth.auth().currentUser?.uid as Any
                 ])
+                
+                // done uploading so reload the map
+                self.loadPins()
             })
-            
-            // done uploading so reload the map
-            self.loadPins()
         })
         //stop spinning and give back control upon successful upload, or failure
         uploadPhoto.observe(.success) {snapshot in

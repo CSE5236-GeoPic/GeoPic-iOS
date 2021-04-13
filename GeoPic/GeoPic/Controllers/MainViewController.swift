@@ -222,12 +222,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
                     let timestamp = document.get("date", serverTimestampBehavior: .estimate) as! Timestamp
                     let date = timestamp.dateValue()
 
-                    let pin = Pin(id: pinID, url: url, coordinate: coord, score: score, userID: userID, date: date)
+                    let circle = MKCircle(center: coord, radius: K.pinCircleRadius)
+                    
+                    let pin = Pin(id: pinID, url: url, coordinate: coord, score: score, userID: userID, date: date, circle: circle)
                     
                     self.mapView.addAnnotation(pin)
                     
-                    let circle = MKCircle(center: coord, radius: K.pinCircleRadius)
-                    self.mapView.addOverlay(circle)
+                    self.mapView.addOverlay(pin.circle!)
                 }
             }
         }
@@ -281,6 +282,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     // Delete pin, called from PictureViewController
     func deletePin(pin: Pin){
         self.mapView.removeAnnotation(pin)
+        self.mapView.removeOverlay(pin.circle!)
     }
     
     // Refenced https://stackoverflow.com/a/38383598

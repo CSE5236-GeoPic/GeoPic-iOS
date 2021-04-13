@@ -55,6 +55,7 @@ class PictureViewController: UIViewController {
             deleteButton.tintColor = .none
         }
         
+        imageView.kf.indicatorType = .activity
         // Get pin image
         imageView.kf.setImage(with: pin?.url)
         

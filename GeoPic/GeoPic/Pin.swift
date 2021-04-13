@@ -15,6 +15,7 @@ class Pin: NSObject, MKAnnotation {
     var score: UInt?
     let userID: String?
     let date: Date?
+    let circle: MKCircle?
 
     init(
         id: String?,
@@ -22,7 +23,8 @@ class Pin: NSObject, MKAnnotation {
         coordinate: CLLocationCoordinate2D,
         score: UInt?,
         userID: String?,
-        date: Date?
+        date: Date?,
+        circle: MKCircle?
     ) {
         self.score = score
         self.userID = userID
@@ -30,6 +32,7 @@ class Pin: NSObject, MKAnnotation {
         self.url = url
         self.id = id
         self.date = date
+        self.circle = circle
         super.init()
     }
     

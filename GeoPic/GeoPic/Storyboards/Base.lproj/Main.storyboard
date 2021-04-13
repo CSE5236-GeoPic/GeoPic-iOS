@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -85,14 +84,19 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utQ-Eh-duR">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="3o4-7P-x2h"/>
+                                </constraints>
                                 <items>
                                     <navigationItem id="38D-MK-5Td">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="EyH-fj-7L1">
+                                            <color key="tintColor" systemColor="systemBlueColor"/>
                                             <connections>
                                                 <action selector="backWithSender:" destination="Bor-mj-4rf" id="Iy3-7Q-B8n"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Item" image="trash" catalog="system" id="qol-bf-ZSW">
+                                            <color key="tintColor" systemColor="systemBlueColor"/>
                                             <connections>
                                                 <action selector="deletePinWithSender:" destination="Bor-mj-4rf" id="RRY-td-TI0"/>
                                             </connections>
@@ -109,21 +113,24 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dB-sb-oyS">
                                         <rect key="frame" x="0.0" y="0.0" width="181" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAN-Fl-l6V">
                                         <rect key="frame" x="189" y="0.0" width="181" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fhy-1L-AZy">
-                                <rect key="frame" x="172.66666666666666" y="724" width="44.666666666666657" height="22"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fhy-1L-AZy">
+                                <rect key="frame" x="160.66666666666666" y="677.33333333333337" width="68.666666666666657" height="68.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Fhy-1L-AZy" secondAttribute="height" multiplier="1:1" id="VCW-UE-kgs"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="(0)" image="heart" catalog="system">
-                                    <color key="titleColor" name="AccentColor"/>
+                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                 </state>
                                 <connections>
                                     <action selector="likeWithSender:" destination="Bor-mj-4rf" eventType="touchUpInside" id="TCc-XT-ddM"/>
@@ -136,16 +143,17 @@
                             <constraint firstItem="haw-Ea-6Rm" firstAttribute="top" secondItem="4NK-0g-lDq" secondAttribute="bottom" constant="18" id="9nB-Fc-kWq"/>
                             <constraint firstAttribute="trailing" secondItem="4NK-0g-lDq" secondAttribute="trailing" constant="10" id="9sX-R8-vDy"/>
                             <constraint firstItem="4NK-0g-lDq" firstAttribute="leading" secondItem="oEm-XX-smf" secondAttribute="leading" constant="10" id="BvQ-XU-NS0"/>
+                            <constraint firstItem="Fhy-1L-AZy" firstAttribute="top" secondItem="haw-Ea-6Rm" secondAttribute="bottom" constant="10" id="NfO-ew-Hrn"/>
                             <constraint firstItem="haw-Ea-6Rm" firstAttribute="centerX" secondItem="oEm-XX-smf" secondAttribute="centerX" id="PBj-qP-hjz"/>
                             <constraint firstItem="utQ-Eh-duR" firstAttribute="top" secondItem="pKa-A3-Obu" secondAttribute="top" id="Qa1-gH-7ur"/>
                             <constraint firstItem="4NK-0g-lDq" firstAttribute="top" secondItem="utQ-Eh-duR" secondAttribute="bottom" constant="20" id="Wkl-Aw-Svp"/>
+                            <constraint firstItem="Fhy-1L-AZy" firstAttribute="centerX" secondItem="oEm-XX-smf" secondAttribute="centerX" id="ZVB-Wk-a8x"/>
                             <constraint firstItem="utQ-Eh-duR" firstAttribute="trailing" secondItem="pKa-A3-Obu" secondAttribute="trailing" id="c9J-yq-87x"/>
                             <constraint firstItem="utQ-Eh-duR" firstAttribute="leading" secondItem="pKa-A3-Obu" secondAttribute="leading" id="d59-HP-VsE"/>
                             <constraint firstItem="pKa-A3-Obu" firstAttribute="trailing" secondItem="haw-Ea-6Rm" secondAttribute="trailing" constant="20" id="gAP-b3-6cv"/>
+                            <constraint firstItem="pKa-A3-Obu" firstAttribute="bottom" secondItem="Fhy-1L-AZy" secondAttribute="bottom" constant="10" id="gpS-bT-DaJ"/>
                             <constraint firstItem="haw-Ea-6Rm" firstAttribute="leading" secondItem="pKa-A3-Obu" secondAttribute="leading" constant="20" id="oHA-Jo-fZG"/>
-                            <constraint firstItem="Fhy-1L-AZy" firstAttribute="centerX" secondItem="oEm-XX-smf" secondAttribute="centerX" id="olU-mx-PqL"/>
                             <constraint firstItem="haw-Ea-6Rm" firstAttribute="height" secondItem="oEm-XX-smf" secondAttribute="height" multiplier="0.7" id="rE9-yn-nec"/>
-                            <constraint firstItem="pKa-A3-Obu" firstAttribute="bottom" secondItem="Fhy-1L-AZy" secondAttribute="bottom" constant="10" id="zWS-Vx-ajt"/>
                         </constraints>
                     </view>
                     <connections>
@@ -177,11 +185,14 @@
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="location.fill" catalog="system" width="128" height="121"/>
         <image name="trash" catalog="system" width="121" height="128"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

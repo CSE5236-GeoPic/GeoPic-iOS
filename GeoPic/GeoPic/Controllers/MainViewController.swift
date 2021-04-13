@@ -12,7 +12,7 @@ import Firebase
 import FirebaseStorage
 import SwiftMessages
 
-class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet private var mapView: MKMapView!
     @IBOutlet private var cameraButton: UIButton!
@@ -138,6 +138,85 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         }
     }
     
+    private func loadPins(){
+        // Remove any pins currently on map
+        let annotations = mapView.annotations.filter({ !($0 is MKUserLocation) })
+        mapView.removeAnnotations(annotations)
+        
+        // Load pins
+        let db = Firestore.firestore()
+        db.collection("photos").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let url = URL(string: document.data()["photo_url"] as! String)
+                    
+                    let point = document.data()["location"] as! GeoPoint
+                    let coord = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
+                    
+                    let score = document.data()["score"] as! UInt
+                    
+                    let userID = document.data()["user"] as! String
+                    
+                    let pinID = document.documentID
+                    
+                    let timestamp = document.get("date", serverTimestampBehavior: .estimate) as! Timestamp
+                    let date = timestamp.dateValue()
+
+                    let circle = MKCircle(center: coord, radius: K.pinCircleRadius)
+                    
+                    let pin = Pin(id: pinID, url: url, coordinate: coord, score: score, userID: userID, date: date, circle: circle)
+                    
+                    self.mapView.addAnnotation(pin)
+                    
+                    self.mapView.addOverlay(pin.circle!)
+                }
+            }
+        }
+        
+    }
+    
+    @IBAction func settingsPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: K.Segues.mainToSettings, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segues.mainToPicture {
+            // Pass pin to the PictureVC
+            guard let pin = sender as? Pin else { return }
+            if let destinationVC = segue.destination as? PictureViewController {
+                destinationVC.pin = pin
+                destinationVC.previousVC = self
+                destinationVC.delegate = self
+            }
+        }
+    }
+    
+    // Delete pin, called from PictureViewController
+    func deletePin(pin: Pin){
+        self.mapView.removeAnnotation(pin)
+        self.mapView.removeOverlay(pin.circle!)
+    }
+    
+    @IBAction func locationPressed(_ sender: UIButton) {
+        centerMapOnUserLocation()
+    }
+    
+    // Moves map and zooms to location
+    func centerMapOnUserLocation(){
+        guard let coordinate = locationManager.location?.coordinate else { return }
+        let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: K.mapSize, longitudinalMeters: K.mapSize)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        centerMapOnUserLocation()
+    }
+}
+
+extension MainViewController: UIImagePickerControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
@@ -195,44 +274,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    
-    private func loadPins(){
-        // Remove any pins currently on map
-        let annotations = mapView.annotations.filter({ !($0 is MKUserLocation) })
-        mapView.removeAnnotations(annotations)
-        
-        // Load pins
-        let db = Firestore.firestore()
-        db.collection("photos").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let url = URL(string: document.data()["photo_url"] as! String)
-                    
-                    let point = document.data()["location"] as! GeoPoint
-                    let coord = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
-                    
-                    let score = document.data()["score"] as! UInt
-                    
-                    let userID = document.data()["user"] as! String
-                    
-                    let pinID = document.documentID
-                    
-                    let timestamp = document.get("date", serverTimestampBehavior: .estimate) as! Timestamp
-                    let date = timestamp.dateValue()
+}
 
-                    let circle = MKCircle(center: coord, radius: K.pinCircleRadius)
-                    
-                    let pin = Pin(id: pinID, url: url, coordinate: coord, score: score, userID: userID, date: date, circle: circle)
-                    
-                    self.mapView.addAnnotation(pin)
-                    
-                    self.mapView.addOverlay(pin.circle!)
-                }
-            }
-        }
-        
+extension MainViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        let userView = mapView.view(for: mapView.userLocation)
+        userView?.isUserInteractionEnabled = false
+        userView?.isEnabled = false
+        userView?.canShowCallout = false
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -263,28 +313,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         self.mapView.deselectAnnotation(pin, animated: false)
     }
     
-    @IBAction func settingsPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: K.Segues.mainToSettings, sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.Segues.mainToPicture {
-            // Pass pin to the PictureVC
-            guard let pin = sender as? Pin else { return }
-            if let destinationVC = segue.destination as? PictureViewController {
-                destinationVC.pin = pin
-                destinationVC.previousVC = self
-                destinationVC.delegate = self
-            }
-        }
-    }
-    
-    // Delete pin, called from PictureViewController
-    func deletePin(pin: Pin){
-        self.mapView.removeAnnotation(pin)
-        self.mapView.removeOverlay(pin.circle!)
-    }
-    
     // Refenced https://stackoverflow.com/a/38383598
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !annotation.isKind(of: MKUserLocation.self) else {
@@ -308,25 +336,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let circleRenderer = MKCircleRenderer(overlay: overlay)
-        circleRenderer.fillColor = UIColor.blue.withAlphaComponent(0.1)
-        circleRenderer.strokeColor = .blue
+        circleRenderer.fillColor = UIColor.systemBlue.withAlphaComponent(0.1)
+        circleRenderer.strokeColor = .systemBlue
         circleRenderer.lineWidth = 1
         return circleRenderer
-    }
-    
-    @IBAction func locationPressed(_ sender: UIButton) {
-        centerMapOnUserLocation()
-    }
-    
-    // Moves map and zooms to location
-    func centerMapOnUserLocation(){
-        guard let coordinate = locationManager.location?.coordinate else { return }
-        let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: K.mapSize, longitudinalMeters: K.mapSize)
-        mapView.setRegion(coordinateRegion, animated: true)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        centerMapOnUserLocation()
     }
 }
 

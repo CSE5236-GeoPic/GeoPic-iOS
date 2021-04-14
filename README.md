@@ -16,7 +16,7 @@ Dr. Adam Champion, The Ohio State University Dept. of Computer Science and Engin
 * The build number respects the following format: `YYYYMMDD##`
 For example, if the date of the build is April 5, 2021 and it is the second bulid of the day, the build number will be: `2021040502`
 
-## Screenshots:
+## Screenshots
 <p>
     <img src="https://i.ibb.co/vP6BMY8/IMG-8932.png" width="32%"></img>
     <img src="https://i.ibb.co/JK2Vs75/IMG-8931.png" width="32%"></img>

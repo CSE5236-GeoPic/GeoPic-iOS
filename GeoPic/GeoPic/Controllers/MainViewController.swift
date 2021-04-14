@@ -19,6 +19,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
     @IBOutlet private var settingsButton: UIButton!
     @IBOutlet private var locationButton: UIButton!
     
+    @IBOutlet var welcomeMessageView: UIView!
+    @IBOutlet var welcomeMessageLabel: UILabel!
+    
     private let storage = Storage.storage().reference()
     var locationManager = CLLocationManager()
     
@@ -26,6 +29,31 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        welcomeMessageView.isHidden = true
+        
+        // display welcome message
+        // retrieve current user's name
+        if let userDocumentId = Auth.auth().currentUser?.uid {
+            print(userDocumentId)
+            let docRef = db.collection("users").document(userDocumentId)
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let currentName = document.data()!["name"] as! String
+                    
+                    // finished getting the current user's name
+                    self.welcomeMessageLabel.text = "Welcome \(currentName)!"
+                    // set up view
+                    self.welcomeMessageView.layer.cornerRadius = 20
+                    self.welcomeMessageView.isHidden = false
+                    // execute animation
+                    self.welcomeMessageView.fadeOut(seconds: 1.0, delay: 2.0)
+                } else {
+                    // do nothing in UI
+                    print("Document does not exist")
+                }
+            }
+        }
         
         // Set up map
         mapView.delegate = self
@@ -389,5 +417,33 @@ extension UIImage {
         guard let result = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
         UIGraphicsEndImageContext()
         return result
+    }
+}
+
+// MARK: - Welcome message animation section
+fileprivate extension UIView {
+    
+    /**
+     Animate the UIView to fade out to desired alpha level.
+     - Parameter alpha: target alpha level
+     - Parameter duration: duration in seconds that the animation will run for
+     - Parameter delay: duration in seconds that the animation will be executed after
+     */
+    private func fadeTo(_ alpha: CGFloat, duration: TimeInterval, delay: TimeInterval) {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: duration, delay: delay, options: .curveEaseOut, animations: {
+                self.alpha = alpha
+            }, completion: nil)
+        }
+    }
+    
+    /**
+     Fade out this UIView during the passed amount of seconds.
+     - Parameter seconds: duration in seconds that the animation will run for
+     - Parameter delay: duration in seconds that the animation will be executed after
+     */
+    func fadeOut(seconds duration: TimeInterval, delay: TimeInterval) {
+        self.alpha = 1.0
+        fadeTo(0.0, duration: duration, delay: delay)
     }
 }

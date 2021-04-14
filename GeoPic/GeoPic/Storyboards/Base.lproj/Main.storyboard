@@ -57,15 +57,41 @@
                                     <action selector="locationPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P54-Ai-7oo"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTN-hy-L7e" userLabel="Welcome Message View">
+                                <rect key="frame" x="97.666666666666686" y="114" width="195" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome &lt;#NAME#&gt;!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="E1V-ge-E8C">
+                                        <rect key="frame" x="0.0" y="0.0" width="195" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6Ny-R4-JK3"/>
+                                    <constraint firstItem="E1V-ge-E8C" firstAttribute="leading" secondItem="LTN-hy-L7e" secondAttribute="leading" id="8Ss-oe-eBB"/>
+                                    <constraint firstAttribute="trailing" secondItem="E1V-ge-E8C" secondAttribute="trailing" id="MUB-3J-EQW"/>
+                                    <constraint firstAttribute="bottom" secondItem="E1V-ge-E8C" secondAttribute="bottom" id="lA6-2Z-CV3"/>
+                                    <constraint firstItem="E1V-ge-E8C" firstAttribute="top" secondItem="LTN-hy-L7e" secondAttribute="top" id="xZx-hm-0vB"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LTN-hy-L7e" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="4g3-RR-miA"/>
+                            <constraint firstItem="LTN-hy-L7e" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="SWS-Uf-m0O"/>
+                            <constraint firstItem="LTN-hy-L7e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="g5d-PO-vch"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraButton" destination="JJ7-EY-VMc" id="4KP-Xp-0bR"/>
                         <outlet property="locationButton" destination="FWv-0z-MVQ" id="Yzy-eF-HYk"/>
                         <outlet property="mapView" destination="bRq-Jf-ret" id="49g-Gj-kzk"/>
                         <outlet property="settingsButton" destination="ifj-2X-E5r" id="W0d-FU-Pc2"/>
+                        <outlet property="welcomeMessageLabel" destination="E1V-ge-E8C" id="TH6-Wh-56s"/>
+                        <outlet property="welcomeMessageView" destination="LTN-hy-L7e" id="wXB-pv-qQP"/>
                         <segue destination="Bor-mj-4rf" kind="presentation" identifier="mainToPicture" modalPresentationStyle="automatic" id="oHg-H8-Qzm"/>
                         <segue destination="lQV-zn-bYl" kind="show" identifier="mainToSettings" id="NkG-ow-bOW"/>
                     </connections>

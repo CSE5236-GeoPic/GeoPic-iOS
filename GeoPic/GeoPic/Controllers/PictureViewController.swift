@@ -114,8 +114,10 @@ class PictureViewController: UIViewController {
         let curr_user = (Auth.auth().currentUser?.uid)!
         let pinRef = db.collection("photos").document((pin?.id)!)
         let likesRef = pinRef.collection("likes")
+        let generator = UINotificationFeedbackGenerator()
         
         if(userLikedPin){
+            generator.notificationOccurred(.warning)
             // Undo like
             self.userLikedPin = false
             
@@ -140,6 +142,7 @@ class PictureViewController: UIViewController {
                 }
             }
         } else {
+            generator.notificationOccurred(.success)
             // Add like
             self.userLikedPin = true
             

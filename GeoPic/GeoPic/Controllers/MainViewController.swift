@@ -320,7 +320,11 @@ extension MainViewController: MKMapViewDelegate {
         guard let pin = view.annotation as? Pin else { return }
         let userLocation = self.locationManager.location!
         let pinLocation = CLLocation(latitude: pin.coordinate.latitude, longitude: pin.coordinate.longitude)
+#if DEBUG
+        let distance = Double(0)
+#else
         let distance = userLocation.distance(from: pinLocation)
+#endif
         print(distance)
         // Return if user is not in the radius of the pin
         if(distance <= K.pinCircleRadius){

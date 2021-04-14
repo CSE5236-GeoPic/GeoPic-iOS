@@ -60,6 +60,8 @@ class PictureViewController: UIViewController {
         imageView.kf.indicatorType = .activity
         // Get pin image
         imageView.kf.setImage(with: pin?.url)
+        // prevent the image from rotating (displaying sideways)
+        imageView.transform = CGAffineTransform(rotationAngle: CGFloat(0))
         
         // Get pin date
         let formatter = DateFormatter()

@@ -47,7 +47,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
                     self.welcomeMessageView.layer.cornerRadius = 20
                     self.welcomeMessageView.isHidden = false
                     // execute animation
-                    self.welcomeMessageView.fadeOut(seconds: 2.0)
+                    self.welcomeMessageView.fadeOut(seconds: 1.0, delay: 2.0)
                 } else {
                     // do nothing in UI
                     print("Document does not exist")
@@ -427,21 +427,23 @@ fileprivate extension UIView {
      Animate the UIView to fade out to desired alpha level.
      - Parameter alpha: target alpha level
      - Parameter duration: duration in seconds that the animation will run for
+     - Parameter delay: duration in seconds that the animation will be executed after
      */
-    private func fadeTo(_ alpha: CGFloat, duration: TimeInterval) {
+    private func fadeTo(_ alpha: CGFloat, duration: TimeInterval, delay: TimeInterval) {
         DispatchQueue.main.async {
-            UIView.animate(withDuration: duration) {
+            UIView.animate(withDuration: duration, delay: delay, options: .curveEaseOut, animations: {
                 self.alpha = alpha
-            }
+            }, completion: nil)
         }
     }
     
     /**
      Fade out this UIView during the passed amount of seconds.
      - Parameter seconds: duration in seconds that the animation will run for
+     - Parameter delay: duration in seconds that the animation will be executed after
      */
-    func fadeOut(seconds duration: TimeInterval) {
+    func fadeOut(seconds duration: TimeInterval, delay: TimeInterval) {
         self.alpha = 1.0
-        fadeTo(0.0, duration: duration)
+        fadeTo(0.0, duration: duration, delay: delay)
     }
 }

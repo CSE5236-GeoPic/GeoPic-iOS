@@ -330,13 +330,15 @@ extension MainViewController: MKMapViewDelegate {
         let distance = userLocation.distance(from: pinLocation)
 #endif
         print(distance)
+        let generator = UINotificationFeedbackGenerator()
         // Return if user is not in the radius of the pin
         if(distance <= K.pinCircleRadius){
+            // play success haptic feedback
+            generator.notificationOccurred(.success)
             // Pass pin to segue
             performSegue(withIdentifier: K.Segues.mainToPicture, sender: pin)
         } else {
             // Haptic feedback when pin is not in range
-            let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
             
             // Show error message

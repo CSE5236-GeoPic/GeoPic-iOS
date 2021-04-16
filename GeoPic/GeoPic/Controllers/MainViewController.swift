@@ -30,6 +30,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UINavigat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let settings = FirestoreSettings()
+        settings.isPersistenceEnabled = true
+        db.settings = settings
+        
         welcomeMessageView.isHidden = true
         
         // display welcome message

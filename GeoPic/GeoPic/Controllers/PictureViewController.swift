@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import Kingfisher
+import SwiftMessages
 
 class PictureViewController: UIViewController {
     
@@ -27,9 +28,15 @@ class PictureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        activityIndicator.hidesWhenStopped = true
+        
         likeButton.imageView?.contentMode = .scaleAspectFit
         
+        let settings = FirestoreSettings()
+        settings.isPersistenceEnabled = true
+        
         let db = Firestore.firestore()
+        db.settings = settings
         
         // Get pin author name
         let docRef = db.collection("users").document((pin?.userID)!)
@@ -59,7 +66,27 @@ class PictureViewController: UIViewController {
         
         imageView.kf.indicatorType = .activity
         // Get pin image
-        imageView.kf.setImage(with: pin?.url)
+        imageView.kf.setImage(with: pin?.url){ result in
+            switch result {
+            case .success( _):
+                print("image successfully loaded")
+            case .failure( _):
+                print("image failed to load")
+                // Haptic feedback when pin is not in range
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.error)
+                
+                // Show error message
+                let errorView = MessageView.viewFromNib(layout: .cardView)
+                errorView.button?.isHidden = true
+                errorView.configureTheme(.error)
+                errorView.configureDropShadow()
+                errorView.configureContent(title: "Error", body: "Image failed to load!")
+                errorView.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+                (errorView.backgroundView as? CornerRoundingView)?.cornerRadius = 10
+                SwiftMessages.show(view: errorView)
+            }
+        }
         // prevent the image from rotating (displaying sideways)
         imageView.transform = CGAffineTransform(rotationAngle: CGFloat(0))
         
@@ -88,12 +115,38 @@ class PictureViewController: UIViewController {
         }
 
     }
+    
+    //Activity indicator with text
+    //From https://stackoverflow.com/questions/28785715/how-to-display-an-activity-indicator-with-text-on-ios-8-with-swift
+    
+    var activityIndicator = UIActivityIndicatorView()
+    var strLabel = UILabel()
+    let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    func activityIndicator(_ title: String) {
+        strLabel.removeFromSuperview()
+        activityIndicator.removeFromSuperview()
+        effectView.removeFromSuperview()
+        strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
+        strLabel.text = title
+        strLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        strLabel.textColor = UIColor(white: 0.9, alpha: 0.7)
+        effectView.frame = CGRect(x: view.frame.midX - strLabel.frame.width/2, y: view.frame.midY - strLabel.frame.height/2 , width: 160, height: 46)
+        effectView.layer.cornerRadius = 15
+        effectView.layer.masksToBounds = true
+        activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
+        activityIndicator.startAnimating()
+        effectView.contentView.addSubview(activityIndicator)
+        effectView.contentView.addSubview(strLabel)
+        view.addSubview(effectView)
+    }
   
     @IBAction func back(sender: UIButton){
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func deletePin(sender: UIBarButtonItem){
+        activityIndicator("Deleting")
         let db = Firestore.firestore()
         // Delete pin from DB
         db.collection("photos").document((pin?.id)!).delete() { err in

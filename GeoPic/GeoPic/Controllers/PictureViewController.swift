@@ -29,6 +29,8 @@ class PictureViewController: UIViewController {
         
         likeButton.imageView?.contentMode = .scaleAspectFit
         
+        imageView.layer.cornerRadius = 15
+        
         let db = Firestore.firestore()
         
         // Get pin author name

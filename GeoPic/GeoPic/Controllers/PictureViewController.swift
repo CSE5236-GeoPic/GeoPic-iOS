@@ -34,6 +34,7 @@ class PictureViewController: UIViewController {
         
         let settings = FirestoreSettings()
         settings.isPersistenceEnabled = true
+        imageView.layer.cornerRadius = 15
         
         let db = Firestore.firestore()
         db.settings = settings

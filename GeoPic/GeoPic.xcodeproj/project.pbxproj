@@ -7,19 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		400C4993262A6CDD00E5516A /* GeoPicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400C4992262A6CDD00E5516A /* GeoPicUITests.swift */; };
 		55719FA525E6FC1A00390E25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55719FA425E6FC1A00390E25 /* GoogleService-Info.plist */; };
 		55719FA625E6FC1A00390E25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55719FA425E6FC1A00390E25 /* GoogleService-Info.plist */; };
-		55719FA725E6FC1A00390E25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55719FA425E6FC1A00390E25 /* GoogleService-Info.plist */; };
 		55719FB225E70A9B00390E25 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FB125E70A9B00390E25 /* MainViewController.swift */; };
 		55719FB325E70A9B00390E25 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FB125E70A9B00390E25 /* MainViewController.swift */; };
-		55719FB425E70A9B00390E25 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FB125E70A9B00390E25 /* MainViewController.swift */; };
 		55719FBA25E7F20200390E25 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55719FB925E7F20200390E25 /* MapKit.framework */; };
 		55719FC525E810F500390E25 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FC425E810F500390E25 /* Pin.swift */; };
 		55719FC625E810F500390E25 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FC425E810F500390E25 /* Pin.swift */; };
-		55719FC725E810F500390E25 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FC425E810F500390E25 /* Pin.swift */; };
 		55719FCF25E8334700390E25 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FCE25E8334700390E25 /* PictureViewController.swift */; };
 		55719FD325E8334A00390E25 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FCE25E8334700390E25 /* PictureViewController.swift */; };
-		55719FD425E8334A00390E25 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719FCE25E8334700390E25 /* PictureViewController.swift */; };
 		55D65EB6261268A500EFB59C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 55D65EB5261268A500EFB59C /* Kingfisher */; };
 		55F8E125261E62F100BEF002 /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 55F8E124261E62F100BEF002 /* SwiftMessages */; };
 		D272DD1725FF460D007FED1D /* SettingsChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D272DD1625FF460D007FED1D /* SettingsChangeViewController.swift */; };
@@ -31,7 +28,6 @@
 		D27CBD1F25DDC7CA00BE02E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD1E25DDC7CA00BE02E9 /* Assets.xcassets */; };
 		D27CBD2225DDC7CA00BE02E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D27CBD2025DDC7CA00BE02E9 /* LaunchScreen.storyboard */; };
 		D27CBD2D25DDC7CB00BE02E9 /* GeoPicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD2C25DDC7CB00BE02E9 /* GeoPicTests.swift */; };
-		D27CBD3825DDC7CB00BE02E9 /* GeoPicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27CBD3725DDC7CB00BE02E9 /* GeoPicUITests.swift */; };
 		D27CBD5625DDCA3D00BE02E9 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5525DDCA3D00BE02E9 /* FirebaseStorage */; };
 		D27CBD5825DDCA3D00BE02E9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5725DDCA3D00BE02E9 /* FirebaseAuth */; };
 		D27CBD5A25DDCA3D00BE02E9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D27CBD5925DDCA3D00BE02E9 /* FirebaseFirestore */; };
@@ -50,14 +46,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D27CBD2925DDC7CB00BE02E9 /* PBXContainerItemProxy */ = {
+		400C4995262A6CDD00E5516A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D27CBD0725DDC7C800BE02E9 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D27CBD0E25DDC7C800BE02E9;
 			remoteInfo = GeoPic;
 		};
-		D27CBD3425DDC7CB00BE02E9 /* PBXContainerItemProxy */ = {
+		D27CBD2925DDC7CB00BE02E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D27CBD0725DDC7C800BE02E9 /* Project object */;
 			proxyType = 1;
@@ -67,6 +63,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		400C4990262A6CDD00E5516A /* GeoPicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoPicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		400C4992262A6CDD00E5516A /* GeoPicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPicUITests.swift; sourceTree = "<group>"; };
+		400C4994262A6CDD00E5516A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55719FA425E6FC1A00390E25 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		55719FB125E70A9B00390E25 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		55719FB925E7F20200390E25 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -85,9 +84,6 @@
 		D27CBD2825DDC7CB00BE02E9 /* GeoPicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoPicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27CBD2C25DDC7CB00BE02E9 /* GeoPicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPicTests.swift; sourceTree = "<group>"; };
 		D27CBD2E25DDC7CB00BE02E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D27CBD3325DDC7CB00BE02E9 /* GeoPicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoPicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D27CBD3725DDC7CB00BE02E9 /* GeoPicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPicUITests.swift; sourceTree = "<group>"; };
-		D27CBD3925DDC7CB00BE02E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27CBD6325DDD38B00BE02E9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		D287919225EF94A600994863 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D28791AA25F006A400994863 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
@@ -100,6 +96,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		400C498D262A6CDD00E5516A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D27CBD0C25DDC7C800BE02E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -123,16 +126,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D27CBD3025DDC7CB00BE02E9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		400C4991262A6CDD00E5516A /* GeoPicUITests */ = {
+			isa = PBXGroup;
+			children = (
+				400C4992262A6CDD00E5516A /* GeoPicUITests.swift */,
+				400C4994262A6CDD00E5516A /* Info.plist */,
+			);
+			path = GeoPicUITests;
+			sourceTree = "<group>";
+		};
 		55719FB825E7F20200390E25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,7 +153,7 @@
 				D27CBD6325DDD38B00BE02E9 /* README.md */,
 				D27CBD1125DDC7C800BE02E9 /* GeoPic */,
 				D27CBD2B25DDC7CB00BE02E9 /* GeoPicTests */,
-				D27CBD3625DDC7CB00BE02E9 /* GeoPicUITests */,
+				400C4991262A6CDD00E5516A /* GeoPicUITests */,
 				D27CBD1025DDC7C800BE02E9 /* Products */,
 				55719FB825E7F20200390E25 /* Frameworks */,
 			);
@@ -159,7 +164,7 @@
 			children = (
 				D27CBD0F25DDC7C800BE02E9 /* GeoPic.app */,
 				D27CBD2825DDC7CB00BE02E9 /* GeoPicTests.xctest */,
-				D27CBD3325DDC7CB00BE02E9 /* GeoPicUITests.xctest */,
+				400C4990262A6CDD00E5516A /* GeoPicUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -186,15 +191,6 @@
 				D27CBD2E25DDC7CB00BE02E9 /* Info.plist */,
 			);
 			path = GeoPicTests;
-			sourceTree = "<group>";
-		};
-		D27CBD3625DDC7CB00BE02E9 /* GeoPicUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D27CBD3725DDC7CB00BE02E9 /* GeoPicUITests.swift */,
-				D27CBD3925DDC7CB00BE02E9 /* Info.plist */,
-			);
-			path = GeoPicUITests;
 			sourceTree = "<group>";
 		};
 		D27CBD4B25DDC80300BE02E9 /* Delegates */ = {
@@ -236,6 +232,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		400C498F262A6CDD00E5516A /* GeoPicUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 400C4997262A6CDD00E5516A /* Build configuration list for PBXNativeTarget "GeoPicUITests" */;
+			buildPhases = (
+				400C498C262A6CDD00E5516A /* Sources */,
+				400C498D262A6CDD00E5516A /* Frameworks */,
+				400C498E262A6CDD00E5516A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				400C4996262A6CDD00E5516A /* PBXTargetDependency */,
+			);
+			name = GeoPicUITests;
+			productName = GeoPicUITests;
+			productReference = 400C4990262A6CDD00E5516A /* GeoPicUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		D27CBD0E25DDC7C800BE02E9 /* GeoPic */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D27CBD3C25DDC7CB00BE02E9 /* Build configuration list for PBXNativeTarget "GeoPic" */;
@@ -281,24 +295,6 @@
 			productReference = D27CBD2825DDC7CB00BE02E9 /* GeoPicTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D27CBD3225DDC7CB00BE02E9 /* GeoPicUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D27CBD4225DDC7CB00BE02E9 /* Build configuration list for PBXNativeTarget "GeoPicUITests" */;
-			buildPhases = (
-				D27CBD2F25DDC7CB00BE02E9 /* Sources */,
-				D27CBD3025DDC7CB00BE02E9 /* Frameworks */,
-				D27CBD3125DDC7CB00BE02E9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D27CBD3525DDC7CB00BE02E9 /* PBXTargetDependency */,
-			);
-			name = GeoPicUITests;
-			productName = GeoPicUITests;
-			productReference = D27CBD3325DDC7CB00BE02E9 /* GeoPicUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -308,14 +304,14 @@
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					400C498F262A6CDD00E5516A = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = D27CBD0E25DDC7C800BE02E9;
+					};
 					D27CBD0E25DDC7C800BE02E9 = {
 						CreatedOnToolsVersion = 12.4;
 					};
 					D27CBD2725DDC7CB00BE02E9 = {
-						CreatedOnToolsVersion = 12.4;
-						TestTargetID = D27CBD0E25DDC7C800BE02E9;
-					};
-					D27CBD3225DDC7CB00BE02E9 = {
 						CreatedOnToolsVersion = 12.4;
 						TestTargetID = D27CBD0E25DDC7C800BE02E9;
 					};
@@ -343,12 +339,19 @@
 			targets = (
 				D27CBD0E25DDC7C800BE02E9 /* GeoPic */,
 				D27CBD2725DDC7CB00BE02E9 /* GeoPicTests */,
-				D27CBD3225DDC7CB00BE02E9 /* GeoPicUITests */,
+				400C498F262A6CDD00E5516A /* GeoPicUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		400C498E262A6CDD00E5516A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D27CBD0D25DDC7C800BE02E9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -372,17 +375,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D27CBD3125DDC7CB00BE02E9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				55719FA725E6FC1A00390E25 /* GoogleService-Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		400C498C262A6CDD00E5516A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				400C4993262A6CDD00E5516A /* GeoPicUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D27CBD0B25DDC7C800BE02E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,29 +417,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D27CBD2F25DDC7CB00BE02E9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				55719FC725E810F500390E25 /* Pin.swift in Sources */,
-				55719FD425E8334A00390E25 /* PictureViewController.swift in Sources */,
-				D27CBD3825DDC7CB00BE02E9 /* GeoPicUITests.swift in Sources */,
-				55719FB425E70A9B00390E25 /* MainViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		400C4996262A6CDD00E5516A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D27CBD0E25DDC7C800BE02E9 /* GeoPic */;
+			targetProxy = 400C4995262A6CDD00E5516A /* PBXContainerItemProxy */;
+		};
 		D27CBD2A25DDC7CB00BE02E9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D27CBD0E25DDC7C800BE02E9 /* GeoPic */;
 			targetProxy = D27CBD2925DDC7CB00BE02E9 /* PBXContainerItemProxy */;
-		};
-		D27CBD3525DDC7CB00BE02E9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D27CBD0E25DDC7C800BE02E9 /* GeoPic */;
-			targetProxy = D27CBD3425DDC7CB00BE02E9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -476,6 +468,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		400C4998262A6CDD00E5516A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GeoPicUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.GeoPicUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GeoPic;
+			};
+			name = Debug;
+		};
+		400C4999262A6CDD00E5516A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GeoPicUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.GeoPicUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GeoPic;
+			};
+			name = Release;
+		};
 		D27CBD3A25DDC7CB00BE02E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -676,49 +704,18 @@
 			};
 			name = Release;
 		};
-		D27CBD4325DDC7CB00BE02E9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2JDGUK4DRH;
-				INFOPLIST_FILE = GeoPicUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.osu.cse.cse5236.GeoPicUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = GeoPic;
-			};
-			name = Debug;
-		};
-		D27CBD4425DDC7CB00BE02E9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2JDGUK4DRH;
-				INFOPLIST_FILE = GeoPicUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.osu.cse.cse5236.GeoPicUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = GeoPic;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		400C4997262A6CDD00E5516A /* Build configuration list for PBXNativeTarget "GeoPicUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				400C4998262A6CDD00E5516A /* Debug */,
+				400C4999262A6CDD00E5516A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D27CBD0A25DDC7C800BE02E9 /* Build configuration list for PBXProject "GeoPic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -742,15 +739,6 @@
 			buildConfigurations = (
 				D27CBD4025DDC7CB00BE02E9 /* Debug */,
 				D27CBD4125DDC7CB00BE02E9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D27CBD4225DDC7CB00BE02E9 /* Build configuration list for PBXNativeTarget "GeoPicUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D27CBD4325DDC7CB00BE02E9 /* Debug */,
-				D27CBD4425DDC7CB00BE02E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
